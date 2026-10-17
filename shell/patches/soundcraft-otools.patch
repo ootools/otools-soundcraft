@@ -1,0 +1,49 @@
+diff --git a/crates/ui-egui/src/fonts.rs b/crates/ui-egui/src/fonts.rs
+index 46d50ba..cca9c46 100644
+--- a/crates/ui-egui/src/fonts.rs
++++ b/crates/ui-egui/src/fonts.rs
+@@ -4,6 +4,19 @@
+ use egui::{FontData, FontDefinitions, FontFamily};
+ use std::sync::Arc;
+ 
++/// 宿主 shell 注入的额外 fallback 字体（键, 字节）：wasm 读不到系统字体，
++/// 会话名 / 轨道名与界面文本里的中文、日文、阿拉伯文需要它们才不会画成方框。
++static EXTRA_FALLBACK_FONTS: std::sync::OnceLock<Vec<(String, Arc<FontData>)>> = std::sync::OnceLock::new();
++
++/// 安装宿主注入的 fallback 字体（插件 shell 启动时调用一次）。
++pub fn set_extra_fallback_fonts(fonts: Vec<(String, Arc<FontData>)>) {
++    let _ = EXTRA_FALLBACK_FONTS.set(fonts);
++}
++
++fn extra_fallback_fonts() -> &'static [(String, Arc<FontData>)] {
++    EXTRA_FALLBACK_FONTS.get().map(|v| v.as_slice()).unwrap_or(&[])
++}
++
+ /// (path, ttc index) candidates for regular and bold UI text, by platform.
+ const REGULAR: &[(&str, u32)] = &[
+     ("/System/Library/Fonts/HelveticaNeue.ttc", 0),
+@@ -127,6 +140,12 @@ pub fn definitions() -> FontDefinitions {
+             family.push("system-hangul".into());
+         }
+     }
++    for (name, data) in extra_fallback_fonts() {
++        fonts.font_data.insert(name.clone(), data.clone());
++    }
++    for stack in fonts.families.values_mut() {
++        stack.extend(extra_fallback_fonts().iter().map(|(n, _)| n.clone()));
++    }
+     fonts
+ }
+ 
+diff --git a/crates/ui-egui/src/panels.rs b/crates/ui-egui/src/panels.rs
+index dda31ce..3c03906 100644
+--- a/crates/ui-egui/src/panels.rs
++++ b/crates/ui-egui/src/panels.rs
+@@ -614,7 +614,6 @@ fn about(app: &mut SoundApp, ctx: &egui::Context) {
+                 ui.label("An open-source digital audio workstation from the ArtCraft team.");
+                 ui.label("Dual-licensed MIT OR Apache-2.0. Made with Rust and egui.");
+                 ui.hyperlink_to("getartcraft.com/apps/soundcraft", "https://getartcraft.com/apps/soundcraft");
+-                ui.hyperlink_to("Join us on Discord", "https://discord.gg/artcraft");
+             }
+         }
+     });

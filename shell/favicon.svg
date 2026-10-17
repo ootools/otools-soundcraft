@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="SoundCraft">
+  <defs>
+    <linearGradient id="bg-soundcraft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg-soundcraft)"/>
+  <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 78 L34 78 L40 50 L48 96 L56 34 L64 88 L72 62 L80 78 L104 78"/>
+  </g>
+  <circle cx="104" cy="78" r="6" fill="#fff"/>
+</svg>
