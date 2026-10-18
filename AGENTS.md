@@ -58,8 +58,8 @@
 | `shell/src/otools.rs` | 桥：`pick_open` / `pick_open_for_command` / `deliver` / 主题 / 社区链接判定 |
 | `shell/src/download.rs` | 上游浏览器下载回退（原样副本） |
 | `shell/src/i18n.rs` | 界面语言：读宿主 locale，把 `shell/i18n/zh-CN.tsv` 生成的表装进上游 `i18n` 模块 |
-| `shell/i18n/zh-CN.tsv` | 英 → 简体中 对照表（**唯一要编辑的翻译文件**）；`node scripts/gen-i18n.mjs` 生成 `src/i18n/table.rs` |
-| `shell/patches/soundcraft-i18n.patch` | 上游 `i18n` 模块本身 + 所有显示点的 `t(...)` 包装（约 350 处，28 个文件） |
+| `shell/i18n/zh-CN.tsv` | 英 → 简体中 对照表（**唯一要编辑的翻译文件**，1013 条）；`node scripts/gen-i18n.mjs` 生成 `src/i18n/table.rs` |
+| `shell/patches/soundcraft-i18n.patch` | 上游 `i18n` 模块本身 + 所有显示点的 `t(...)` 包装（394 处，19 个文件） |
 | `shell/src/main.rs` | wasm-only 外壳入口 |
 | `shell/patches/*.patch` | 对 `upstream/` 的本地裁剪（fallback 字体注入点 + 移除 Discord 链接） |
 | `upstream/` | （不在 git 里）上游源码，都是 path 依赖直接复用 |
