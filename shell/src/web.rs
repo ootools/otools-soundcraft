@@ -26,6 +26,8 @@ const LOADING_ID: &str = "soundcraft_loading";
 
 pub fn start() {
     eframe::WebLogger::init(log::LevelFilter::Info).ok();
+    // 界面语言：第一帧之前就装好表（宿主语言决定菜单中文还是英文）。
+    crate::i18n::poll_host_language();
     // 保存/导出：在 OTools 里交给宿主的另存对话框与磁盘；否则退回浏览器下载。
     if crate::otools::available() {
         io::set_deliver(crate::otools::deliver);
@@ -72,7 +74,7 @@ pub fn start() {
                     }
                     // 打开对话框读到的字节进这个 inbox（宿主不可用时整体静默）。
                     crate::otools::install(inbox.clone(), cc.egui_ctx.clone());
-                    Ok(Box::new(WebShell { app, inbox, samples }))
+                    Ok(Box::new(WebShell { app, inbox, samples, frames: 0 }))
                 }),
             )
             .await;
@@ -101,6 +103,8 @@ struct WebShell {
     app: SoundApp,
     inbox: Inbox,
     samples: SampleInbox,
+    /// 帧计数，用来把「轮询宿主语言」节流到每秒一次。
+    frames: u32,
 }
 
 impl WebShell {
@@ -200,6 +204,13 @@ impl WebShell {
 
 impl eframe::App for WebShell {
     fn logic(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+        // 界面语言跟着 OTools 宿主走。egui 空闲不跑帧、trunk 产出的是 ES module，
+        // JS → wasm 的回调不可行，所以这里按帧号轮询（每 60 帧约一秒一次）：
+        // 启动时一定生效，运行中改宿主语言也能跟上。
+        self.frames = self.frames.wrapping_add(1);
+        if self.frames % 60 == 1 {
+            crate::i18n::poll_host_language();
+        }
         self.take_drops(ctx);
         self.take_path_prompt(ctx);
         let pending = std::mem::take(&mut *self.inbox.borrow_mut());

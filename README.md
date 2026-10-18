@@ -19,13 +19,17 @@ otools-soundcraft/
 │   ├── Trunk.toml         # trunk 构建配置（产物 dist/）
 │   ├── index.html         # window.soundcraftOtools 宿主桥 + WebAudio 首次手势 resume
 │   ├── src/
-│   │   ├── main.rs        # 改编自上游 soundcraft-web：wasm-only 外壳
-│   │   ├── web.rs         # 改编自上游 apps/soundcraft-web/src/web.rs（整层拷贝 + 三处改动）
-│   │   ├── otools.rs      # wasm-bindgen 桥：openFiles/saveFile/theme/deliver
+│   │   ├── main.rs        # 编译自上游 soundcraft-web：wasm-only 外壳
+│   │   ├── web.rs         # 编译自上游 apps/soundcraft-web/src/web.rs（整层拷贝 + 改动）
+│   │   ├── otools.rs      # wasm-bindgen 桥：openFiles/saveFile/theme/language/deliver
+│   │   ├── i18n.rs        # 界面语言：读宿主 locale → 装翻译表
+│   │   ├── i18n/table.rs  # 由 scripts/gen-i18n.mjs 生成（不要手改）
 │   │   └── download.rs    # 上游浏览器下载回退（原样副本）
+│   ├── i18n/zh-CN.tsv      # 英 → 简体中 对照表（唯一要编辑的文件）
 │   ├── assets/fonts/      # 内嵌 CJK + 阿拉伯 fallback 字体子集
 │   └── patches/           # 对上游的本地裁剪补丁（随 upstream 重拉而重放）
-│       └── soundcraft-otools.patch
+│       ├── soundcraft-otools.patch
+│       └── soundcraft-i18n.patch
 ├── scripts/               # 构建 / 打包 / 发布 / 验证
 └── .github/workflows/     # 独立发布 CI
 ```
@@ -62,6 +66,29 @@ cpal（wasm）在启动时就建输出流，早于任何用户手势，WebAudio 
 About 面板里的 Discord 链接由补丁移除；`web.rs` 的 `logic()` 另外吞掉所有
 `OpenUrl`（Discord / getartcraft.com / 上游 GitHub），点击不再跳出插件。
 
+### 5. 界面语言：跟随 OTools 宿主（简体中文）
+
+上游 SoundCraft **没有界面语言偏好项**（见 `upstream/docs/localization-parity.md`：English only）。
+插件这一层把它补上：
+
+1. `shell/index.html` 的 `window.soundcraftOtools.language()` 读出宿主注入的
+   `window.__OTOOLS_LOCALE__.locale`（BCP 47，如 `zh-CN`）；
+2. `shell/src/i18n.rs` 按 `zh` 前缀判定，把 `shell/i18n/zh-CN.tsv` 生成的表装进
+   上游 `soundcraft_ui_egui::i18n`（由 `soundcraft-i18n.patch` 加进上游）；
+3. 上游所有**显示用**字符串过 `crate::i18n::t(...)`，查不到就原样返回英文。
+
+要加翻译：编辑 `shell/i18n/zh-CN.tsv`（一行一条，`英文` + TAB + `中文`）→
+`node scripts/gen-i18n.mjs` → 重新构建。补丁里的包装点不用手改。
+
+**只译 label，不译 path**。菜单树 `MenuNode { label, path }` 里 `path` 承载逻辑
+（`command_for_path` / `ruler_id` / `mix_section_id` / `params_for` 全按 path 匹配），`label` 只用于显示。
+同理，任何被 `match` / 查表当键用的字符串（自动化模式名、播放列表名、预设名）都不能包。
+
+覆盖范围（简体中文）：菜单栏与命令面板全部条目、全部浮动窗口的标题与字段/按钮、
+工具栏提示、面板分区标题、轨道/片段右键菜单、About 与恢复等对话框。
+**还没有**：插件参数名与选项值（来自 `soundcraft_dsp` 的数据）、引擎状态文案、
+撤销历史的步骤名、egui 自带的文本编辑右键菜单。
+
 ## 构建
 
 ```bash
@@ -80,6 +107,15 @@ node scripts/probe-host-bridge.mjs  # 无头 Chromium + 假宿主：启动 / 打
 
 判定「真的启动」看 loading 节点是否被移除、canvas 是否有尺寸；宿主桥单独走一遍
 打开 → 读字节 → 保存 → 同名单文件覆盖，并截图存到 `dist-pack/probe-screenshot.png`。
+
+界面语言（伪造 locale，截图供肉眼核对）：
+
+```bash
+node scripts/probe-language.mjs zh-CN    # 默认：菜单栏 / 面板标题 / 传输栏应为中文
+node scripts/probe-language.mjs en-US    # 应为英文（查不到就回退）
+```
+
+产出 `dist-pack/lang-menubar.png` 与 `dist-pack/lang-file-menu.png`。
 
 ## 跑起来
 

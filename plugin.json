@@ -25,5 +25,5 @@
   "screenshots": [],
   "summary": "SoundCraft（开源、纯 Rust 重写的 Pro Tools 式数字音频工作站）的 OTools 插件版：多轨编辑、混音、MIDI、合成器与效果器插件，会话以单个 .scraftz 包存取。",
   "uuid": "otools-soundcraft",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

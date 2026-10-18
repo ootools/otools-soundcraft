@@ -79,6 +79,10 @@ extern "C" {
     #[wasm_bindgen(js_namespace = soundcraftOtools, js_name = "theme")]
     fn host_theme() -> String;
 
+    /// 宿主界面语言（BCP 47，如 `zh-CN`）；不在宿主里时是浏览器语言或空串。
+    #[wasm_bindgen(js_namespace = soundcraftOtools, js_name = "language")]
+    fn host_language() -> String;
+
     /// `{title, filters, multiple}` → `[{name, path, dataBase64}]`（用户取消时空数组）。
     #[wasm_bindgen(js_namespace = soundcraftOtools, js_name = "openFiles")]
     fn host_open_files(request: JsValue) -> js_sys::Promise;
@@ -102,6 +106,11 @@ pub type Inbox = std::rc::Rc<std::cell::RefCell<Vec<(Purpose, String, Vec<u8>)>>
 /// 宿主是否可用（不在 OTools 里时退回上游的浏览器行为：下载文件）。
 pub fn available() -> bool {
     host_available()
+}
+
+/// OTools 的界面语言（BCP 47，如 `zh-CN`），决定菜单走中文还是英文。
+pub fn language() -> String {
+    host_language()
 }
 
 /// OTools 的界面主题，用于给 egui 一个初始亮度（`""` = 跟随系统）。

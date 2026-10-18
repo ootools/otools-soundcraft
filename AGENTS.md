@@ -57,6 +57,9 @@
 | `shell/src/web.rs` | 上游 `apps/soundcraft-web/src/web.rs` 整层拷贝 + 三处改动（见下） |
 | `shell/src/otools.rs` | 桥：`pick_open` / `pick_open_for_command` / `deliver` / 主题 / 社区链接判定 |
 | `shell/src/download.rs` | 上游浏览器下载回退（原样副本） |
+| `shell/src/i18n.rs` | 界面语言：读宿主 locale，把 `shell/i18n/zh-CN.tsv` 生成的表装进上游 `i18n` 模块 |
+| `shell/i18n/zh-CN.tsv` | 英 → 简体中 对照表（**唯一要编辑的翻译文件**）；`node scripts/gen-i18n.mjs` 生成 `src/i18n/table.rs` |
+| `shell/patches/soundcraft-i18n.patch` | 上游 `i18n` 模块本身 + 所有显示点的 `t(...)` 包装（约 350 处，28 个文件） |
 | `shell/src/main.rs` | wasm-only 外壳入口 |
 | `shell/patches/*.patch` | 对 `upstream/` 的本地裁剪（fallback 字体注入点 + 移除 Discord 链接） |
 | `upstream/` | （不在 git 里）上游源码，都是 path 依赖直接复用 |
@@ -80,8 +83,11 @@
 - 上游网页版的设施都没移植：TCP 控制通道、开机字体抓取、多标签页 Web Locks、粘贴事件。
 - 会话在浏览器/wasm 下只能是单个 `.scraftz` 包（上游 `io::save_session` 的 wasm 分支），
   所以「保存」始终是一个文件，不会在旁边写 `Audio Files/` 目录。
-- 界面只有英文（上游没有界面语言偏好项），所以没有「跟随宿主语言」这一步；
-  但会话名/轨道名里的中文靠内嵌 fallback 字体正常显示。
+- 界面语言：简体中文覆盖菜单栏、命令面板、所有浮动窗口（标题/字段/按钮）、工具栏提示、
+  面板分区标题、轨道/片段右键菜单、About 与恢复对话框。还没有的：插件参数名与选项值
+  （`soundcraft_dsp` 的数据）、引擎状态文案、撤销历史步骤名、egui 自带的文本编辑右键菜单。
+  只跟随 OTools 宿主语言（`__OTOOLS_LOCALE__.locale` 以 `zh` 开头就用简中表），运行中切换语言下一秒生效。
+  会话名/轨道名里的中文靠内嵌 fallback 字体显示（见 `soundcraft-otools.patch`）。
 
 ## 不要做的事
 
@@ -91,3 +97,21 @@
   补丁没打上时构建报的是「上游没有 xx 符号」这种隔层错误）。
 - 不要在本仓库跑 `cargo build` 而不管 target：外壳是 wasm-only 的，
   宿主（x86_64）下 `main()` 只会打印一行提示，别把它当编译报错。
+
+## 界面语言（i18n）
+
+上游没有 i18n（`upstream/docs/localization-parity.md`：English only，估时 70–110h）。插件这一层自己搭了一套：
+
+- `upstream/crates/ui-egui/src/i18n.rs` 是**补丁加进去的**（`thread_local` 存一张 `&'static [(&str,&str)]` 表，
+  `t(s)` 二分查找，未命中原样返回）。补丁同时在 `lib.rs` 加 `pub mod i18n;`。
+- 补丁把上游所有**显示用**字符串包上 `t(...)`。改上游显示文案就是改补丁：
+  改 `upstream/` → `git diff > shell/patches/soundcraft-i18n.patch`（新文件先 `git add -N`，剥掉 fonts.rs 部分）→
+  `git checkout -f -- . && git clean -fd` → `git apply --check` 验证。
+- **只译 label，不译 path**。`MenuNode { label, path }` 的 `path` 承载逻辑
+  （`command_for_path` / `ruler_id` / `mix_section_id` / `params_for`）；`live_label` 的撤销步骤名来自引擎，只译动词。
+- 同理不能包的：自动化模式名（`m.label()` 同时是 `run` 的参数）、`timebase` 的 `ticks`/`samples`、
+  `bit_depth` 的 `16`/`24`/`32f`、`FadeShape::label()`（同时是 `radio_value` 的值）、
+  `TrackHeight::label()`（同时是 `run` 的参数）、`<factory default>`（预设名）、
+  `panels.rs` 里 `for f in ["volume","pan",...]` 这种用来组命令 id 的字符串。
+- 加翻译：改 `shell/i18n/zh-CN.tsv` → `node scripts/gen-i18n.mjs` → 重构建。补丁不动。
+- 验证：`node scripts/probe-language.mjs zh-CN` / `en-US`，截图对照。
