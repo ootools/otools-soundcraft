@@ -1011,3 +1011,169 @@ Hide	隐藏
 Select a MIDI clip (or a MIDI track) to edit its notes.	请选择一个 MIDI 片段（或 MIDI 轨道）以编辑其音符。
 OBJECT	对象
 BED	基底
+Eq	均衡
+PitchShift	移调
+Dither	抖动
+Built-in	内置
+Chorus	合唱
+Compressor/Limiter	压缩/限幅
+De-Esser	齿音消除
+Drum Synth	鼓合成器
+EQ 1-Band	EQ 单频段
+EQ 7-Band	EQ 七频段
+Expander/Gate	扩展/门
+Flanger	镶边
+Maximizer	最大化器
+Mod Delay	调制延迟
+Phaser	移相器
+Pitch Shifter	移调器
+Plate Reverb	板式混响
+Rectifier	整流器
+Room Reverb	房间混响
+Sampler	采样器
+Saturator	饱和器
+Subtractive Synth	减法合成器
+Mix	混合	param
+Level	电平
+Threshold	阈值
+Release	释放
+Feedback	反馈
+Attack	启动
+Rate	速率
+Depth	深度
+Ratio	比率
+Range	范围
+Freq	频率
+HPF	高通滤波器
+HPF Freq	高通频率
+LPF	低通滤波器
+Decay	衰减
+Velocity Sens	速度敏感度
+Cutoff	截止频率
+Kick Tune	底鼓音高
+Kick Decay	底鼓衰减
+Snare Tune	军鼓音高
+Snare Snappy	军鼓脆度
+Snare Decay	军鼓衰减
+Closed Hat Decay	闭合踩镲衰减
+Open Hat Decay	开放踩镲衰减
+Tom Tune	嗵鼓音高
+Tom Decay	嗵鼓衰减
+Cymbal Decay	镲片衰减
+Knee	拐点
+Makeup	补偿增益
+SC HPF	侧链高通
+SC HPF Freq	侧链高通频率
+Limit	限制
+Lookahead	预读
+Hold	保持
+Listen	监听
+Ceiling	上限
+HPF Slope	高通斜率
+LF Freq	低频频率
+LF Gain	低频增益
+LF Q	低频 Q
+LMF Freq	中低频频率
+LMF Gain	中低频增益
+LMF Q	中低频 Q
+MF Freq	中频频率
+MF Gain	中频增益
+MF Q	中频 Q
+HMF Freq	中高频频率
+HMF Gain	中高频增益
+HMF Q	中高频 Q
+HF Freq	高频频率
+HF Gain	高频增益
+HF Q	高频 Q
+LPF Freq	低通频率
+LPF Slope	低通斜率
+Type	类型
+Drive	驱动
+Asymmetry	不对称度
+Tone	音色
+Noise	噪声
+Time	时间
+Mod Rate	调制速率
+Mod Depth	调制深度
+Spread	扩散
+Stages	级数
+Center	中心频率
+Fine	微调
+Pre-Delay	预延迟
+Size	大小
+HF Damping	高频阻尼
+Diffusion	扩散
+Width	宽度
+Low Cut	低切
+Root Note	根音
+Fine Tune	细调
+Key Tracking	键位跟踪
+Lowest Key	最低键
+Highest Key	最高键
+Lowest Velocity	最低速度
+Highest Velocity	最高速度
+Sustain	延音
+Play Mode	播放模式
+Sample Start	样本起点
+Loop	循环
+Loop Start	循环起点
+Loop End	循环终点
+Gate	门
+Gate Thresh	门阈值
+Gate Range	门范围
+Gate Release	门释放
+Comp	压缩
+Comp Thresh	压缩阈值
+Comp Ratio	压缩比率
+Comp Attack	压缩启动
+Comp Release	压缩释放
+Comp Makeup	压缩补偿
+Low Gain	低频增益
+Low Freq	低频频率
+Mid Gain	中频增益
+Mid Freq	中频频率
+Mid Q	中频 Q
+High Gain	高频增益
+High Freq	高频频率
+Osc 1	振荡器 1
+Osc 2	振荡器 2
+Osc 2 Pitch	振荡器 2 音高
+Osc 2 Detune	振荡器 2 失谐
+Osc Mix	振荡器混合
+Resonance	谐振
+Filter Env	滤波器包络
+Amp Attack	放大器启动
+Amp Decay	放大器衰减
+Amp Sustain	放大器延音
+Amp Release	放大器释放
+Filter Attack	滤波器启动
+Filter Decay	滤波器衰减
+Filter Sustain	滤波器延音
+Filter Release	滤波器释放
+Glide	滑音
+Waveform	波形
+Frequency	频率
+Noise Shaping	噪声整形
+6 dB/oct	6 dB/八度
+12 dB/oct	12 dB/八度
+18 dB/oct	18 dB/八度
+24 dB/oct	24 dB/八度
+Low Shelf	低频搁架
+High Shelf	高频搁架
+High Pass	高通
+Low Pass	低通
+Notch	陷波
+Band Pass	带通
+Half Wave	半波
+Full Wave	全波
+One Shot	单次播放
+Forward	正向
+Ping-Pong	往复
+Saw	锯齿波
+Square	方波
+Sine	正弦波
+Triangle	三角波
+Peak dB	峰值 dB
+Length ratio	长度比率
+Speed	速度
+No parameters.	无参数。

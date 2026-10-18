@@ -58,8 +58,8 @@
 | `shell/src/otools.rs` | 桥：`pick_open` / `pick_open_for_command` / `deliver` / 主题 / 社区链接判定 |
 | `shell/src/download.rs` | 上游浏览器下载回退（原样副本） |
 | `shell/src/i18n.rs` | 界面语言：读宿主 locale，把 `shell/i18n/zh-CN.tsv` 生成的表装进上游 `i18n` 模块 |
-| `shell/i18n/zh-CN.tsv` | 英 → 简体中 对照表（**唯一要编辑的翻译文件**，1013 条）；`node scripts/gen-i18n.mjs` 生成 `src/i18n/table.rs` |
-| `shell/patches/soundcraft-i18n.patch` | 上游 `i18n` 模块本身 + 所有显示点的 `t(...)` 包装（394 处，19 个文件） |
+| `shell/i18n/zh-CN.tsv` | 英 → 简体中 对照表（**唯一要编辑的翻译文件**，1179 条）；`node scripts/gen-i18n.mjs` 生成 `src/i18n/table.rs` |
+| `shell/patches/soundcraft-i18n.patch` | 上游 `i18n` 模块本身 + 所有显示点的 `t(...)` / `t_ctx(...)` 包装（413 处，21 个文件） |
 | `shell/src/main.rs` | wasm-only 外壳入口 |
 | `shell/patches/*.patch` | 对 `upstream/` 的本地裁剪（fallback 字体注入点 + 移除 Discord 链接） |
 | `upstream/` | （不在 git 里）上游源码，都是 path 依赖直接复用 |
@@ -84,8 +84,10 @@
 - 会话在浏览器/wasm 下只能是单个 `.scraftz` 包（上游 `io::save_session` 的 wasm 分支），
   所以「保存」始终是一个文件，不会在旁边写 `Audio Files/` 目录。
 - 界面语言：简体中文覆盖菜单栏、命令面板、所有浮动窗口（标题/字段/按钮）、工具栏提示、
-  面板分区标题、轨道/片段右键菜单、About 与恢复对话框。还没有的：插件参数名与选项值
-  （`soundcraft_dsp` 的数据）、引擎状态文案、撤销历史步骤名、egui 自带的文本编辑右键菜单。
+  面板分区标题、轨道/片段右键菜单、About 与恢复对话框，以及插件分类名、插件名、插件参数名与选项值
+  （`soundcraft_dsp` 的数据，出现在插件面板、插入菜单、轨道视图菜单、Clip Effects、AudioSuite 等处）。
+  还没有的：引擎状态文案（含插件名的报错一籾整句英文，不半若中不中）、撤销历史步骤名、
+  egui 自带的文本编辑右键菜单、插件搜索框的匹配（按英文名搜）。
   只跟随 OTools 宿主语言（`__OTOOLS_LOCALE__.locale` 以 `zh` 开头就用简中表），运行中切换语言下一秒生效。
   会话名/轨道名里的中文靠内嵌 fallback 字体显示（见 `soundcraft-otools.patch`）。
 
@@ -105,8 +107,13 @@
 - `upstream/crates/ui-egui/src/i18n.rs` 是**补丁加进去的**（`thread_local` 存一张 `&'static [(&str,&str)]` 表，
   `t(s)` 二分查找，未命中原样返回）。补丁同时在 `lib.rs` 加 `pub mod i18n;`。
 - 补丁把上游所有**显示用**字符串包上 `t(...)`。改上游显示文案就是改补丁：
-  改 `upstream/` → `git diff > shell/patches/soundcraft-i18n.patch`（新文件先 `git add -N`，剥掉 fonts.rs 部分）→
+  改 `upstream/` → 剥掉 fonts.rs（`git checkout -- crates/ui-egui/src/fonts.rs`）→
+  `git diff > shell/patches/soundcraft-i18n.patch`（新文件先 `git add -N` 才会进入 diff）→
+  **`git reset -- <新文件>`** → 把 otools 补丁打回去（`git apply shell/patches/soundcraft-otools.patch`）→
   `git checkout -f -- . && git clean -fd` → `git apply --check` 验证。
+  不 `git reset` 的后果：索引里留一条空 blob，下次 `git checkout -f -- .` 会把新文件
+  （i18n.rs）截成空文件，而 `git clean -fd` 不会删它（它已经“被跟踪”了），结果 `git apply` 报
+  `already exists in working directory`。
 - **只译 label，不译 path**。`MenuNode { label, path }` 的 `path` 承载逻辑
   （`command_for_path` / `ruler_id` / `mix_section_id` / `params_for`）；`live_label` 的撤销步骤名来自引擎，只译动词。
 - 同理不能包的：自动化模式名（`m.label()` 同时是 `run` 的参数）、`timebase` 的 `ticks`/`samples`、
@@ -114,4 +121,8 @@
   `TrackHeight::label()`（同时是 `run` 的参数）、`<factory default>`（预设名）、
   `panels.rs` 里 `for f in ["volume","pan",...]` 这种用来组命令 id 的字符串。
 - 加翻译：改 `shell/i18n/zh-CN.tsv` → `node scripts/gen-i18n.mjs` → 重构建。补丁不动。
+- 第三列（上下文）：同一个英文句在不同界面含义不同时用，目前只有一条。
+  `Mix` 在插件参数里是干湿混合量（代码写 `t_ctx("param", p.name)`，译“混合”）；
+  菜单 / 窗口标题 / 命令面板里的 `Mix` 是混音台窗口（默认键，译“混音台”）。
+  写法：`Mix<TAB>混合<TAB>param`，生成的键是 `param\u{1f}Mix`。别的继续用两列。
 - 验证：`node scripts/probe-language.mjs zh-CN` / `en-US`，截图对照。
