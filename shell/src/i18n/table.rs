@@ -1,6 +1,6 @@
 //! 由 `node scripts/gen-i18n.mjs` 从 `shell/i18n/zh-CN.tsv` 生成，请勿手改。
 
-/// 1179 条界面字符串的英 → 简中对照，按英文键排序（二分查找）。
+/// 1180 条界面字符串的英 → 简中对照，按英文键排序（二分查找）。
 pub static ZH_CN: &[(&str, &str)] = &[
     ("(redo)", "(重做)"),
     ("+ Marker", "+标记"),
@@ -553,6 +553,7 @@ pub static ZH_CN: &[(&str, &str)] = &[
     ("Mod Delay III", "Mod Delay III"),
     ("Mod Depth", "调制深度"),
     ("Mod Rate", "调制速率"),
+    ("Modify Group…", "修改编组…"),
     ("Modulation", "调制"),
     ("Momentary", "点触"),
     ("Mono", "单声道"),

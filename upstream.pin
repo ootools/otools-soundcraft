@@ -3,7 +3,7 @@
   "ssh": "git@github.com:storytold/soundcraft.git",
   "https": "https://github.com/storytold/soundcraft.git",
   "ref": "main",
-  "commit": "f3a19480d8cc2d7a98cda492f5464d8c54558c9f",
+  "commit": "e8940766d77601942b31e62570a06c44db1ec68e",
   "strategy": "shallow-fetch-pinned-commit",
   "note": "上游代码不入库。改这个 commit 并跑 node scripts/fetch-upstream.mjs 即可同步；务必用完整 SHA，保证可复现。"
 }
