@@ -89,6 +89,53 @@ About 面板里的 Discord 链接由补丁移除；`web.rs` 的 `logic()` 另外
 **还没有**：插件参数名与选项值（来自 `soundcraft_dsp` 的数据）、引擎状态文案、
 撤销历史的步骤名、egui 自带的文本编辑右键菜单。
 
+## MCP
+
+插件通过宿主的 **headless MCP 后端**暴露上游 `soundcraft-automation` 的 17 个工具
+（`list_commands` / `execute` / `batch` / `inspect_session` / `bounce_mix` / `ui_*` …），
+不另写一套工具定义：
+
+- `plugin.json` 声明 `mcp.backend = "headless"` + `native.enabled = true`，`expose` 列出全部工具；
+- **注解只补上游缺的那几条**：上游 `tool_definitions()` 不带任何 `readOnlyHint` /
+  `destructiveHint`，所以 manifest 只为 4 个纯只读工具（`list_commands` /
+  `inspect_session` / `parity` / `ui_inspect`）和写文件但不改工程的 `screenshot`
+  声明注解；其余一律不写，交给宿主默认。多写会盖掉本就没有的上游语义、还会把
+  工具错误地排除出设置页的默认勾选；
+- `native/` 是薄适配层（cdylib）：`__otools_mcp_tools__` 直接返回上游
+  `mcp::tool_definitions()`，`__otools_mcp_call__` 走 `Server<Headless>::call_tool`；
+- 会话常驻在 dylib 内的 `OnceLock<Mutex<Server<Headless>>>`，因此
+  `new_session → import_audio → bounce_mix` 这类有状态序列落在同一个 Engine 上；
+- **不做按工具名的过滤**：`screenshot` / `click` / `drag` 这类 `APP_ONLY` 工具照常出现在
+  工具表里，headless 调用时返回上游「需要桌面 App」的可读错误。
+
+`native/` 里有一条 `plugin_manifest_expose_matches_upstream_tools` 测试，
+断言 `plugin.json` 的 `mcp.expose` 每个名字都真实存在于上游工具表。
+
+### resources
+
+上游除 tools 外还提供 **MCP resources**，插件原样转发（不复制内容）：
+
+| URI | 上游 name | 内容 |
+| --- | --- | --- |
+| `soundcraft://session` | `Session` | 当前会话的完整 JSON（`session.inspect`） |
+| `soundcraft://commands` | `Commands` | 全部命令（`engine.commands`） |
+
+宿主 ABI 的三个 method：`__otools_mcp_resources__`（→ `{resources:[…]}`）、
+`__otools_mcp_resource_templates__`（→ `{resourceTemplates:[…]}`）、
+`__otools_mcp_read_resource__`（`{uri}` → `{contents:[{uri,mimeType,text|blob}]}`）。
+读失败以 `ok:false` 表达（resources 没有 `isError` 信封）。
+
+实现方式：上游 `soundcraft-automation` 的 `Server<Headless>` 自带
+`resources/list` / `resources/read`，本插件只是把宿主 method 转成一次上游调用，
+资源定义（URI、description、取数逻辑）完全来自上游。
+
+本地冒烟（按宿主的方式 dlopen 并真调工具 + 列举/读取资源）：
+
+```bash
+cargo build --release --manifest-path native/Cargo.toml
+node scripts/smoke-mcp.mjs ..          # 参数是各 craft 仓库的共同父目录
+```
+
 ## 上游版本
 
 打包所用的上游提交。`upstream.pin` 是唯一真源，这张表用来回溯「哪个插件版本打的是哪份上游代码」，

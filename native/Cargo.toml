@@ -1,0 +1,39 @@
+# SoundCraft 的 OTools 插件 native 适配层。
+#
+# 上游 `crates/automation` 已经是 GUI-free 的（只依赖 engine / time / serde_json / log），
+# 并且直接给出两件我们需要的东西：
+#   - `mcp::tool_definitions() -> Vec<Value>` —— 16 个工具的 MCP 定义
+#   - `mcp::Server<B>::call_tool(name, args) -> Value` —— 返回 content + isError
+#   - `Headless`（进程内 Engine，无窗口）作为 Backend
+# 因此本 crate 只是把这两件事接到宿主契约上，业务逻辑一行不重写。
+#
+# 独立 workspace：上游 workspace 是 wasm/GUI 导向，并进来会把 UI 依赖带进插件构建。
+[package]
+name = "otools-soundcraft-native"
+description = "SoundCraft as an OTools plugin: headless MCP backend over the upstream soundcraft-automation crate"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "otools_soundcraft_native"
+
+[dependencies]
+soundcraft-automation = { path = "../upstream/crates/automation" }
+soundcraft-engine = { path = "../upstream/crates/engine" }
+serde_json = "1"
+
+# 上游 workspace 的 patch 不会跟着 path 依赖传播，当前 soundcraft 没有
+# `[patch.crates-io]`；上游新增补丁时必须同步到这里（见 AGENTS.md）。
+
+# cdylib 必须可 unwind：插件 FFI 边界在插件内部捕获 panic，
+# 若 release profile 设成 abort，宿主会整体被杀。
+[profile.release]
+panic = "unwind"
+opt-level = 3
+lto = "thin"
+codegen-units = 16
