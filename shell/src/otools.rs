@@ -90,6 +90,10 @@ extern "C" {
     /// `{name, dataBase64, forcePick}` → `{path}` 或 `null`（用户取消）。
     #[wasm_bindgen(js_namespace = soundcraftOtools, js_name = "saveFile")]
     fn host_save_file(request: JsValue) -> js_sys::Promise;
+
+    /// 宿主投递的「打开方式」：JS 侧已把文件读成字节攒好，这里一次取走。
+    #[wasm_bindgen(js_namespace = soundcraftOtools, js_name = "takeDelivered")]
+    fn take_delivered_raw() -> js_sys::Array;
 }
 
 thread_local! {
@@ -103,6 +107,37 @@ thread_local! {
 
 /// 上游 `web.rs` 的 Inbox：文件按用途分流，等下一帧处理。
 pub type Inbox = std::rc::Rc<std::cell::RefCell<Vec<(Purpose, String, Vec<u8>)>>>;
+/// 取走宿主投递的文件：下一帧由 `WebShell::logic` 按扩展名分流打开
+/// （工程 / 音频 / MIDI，与「文件 ▸ 打开」和拖放同一条路）。
+///
+/// 方向与 `deliver` 相反：宿主在系统里双击已绑定扩展名的文件 → 投递队列 →
+/// 本函数取走 → `handle()`。
+pub fn drain_delivered() {
+    let mut pushed = false;
+    for item in take_delivered_raw().iter() {
+        if !item.is_object() {
+            continue;
+        }
+        let name = field(&item, "name").unwrap_or_else(|| "untitled.wav".to_string());
+        let data = field(&item, "dataBase64").unwrap_or_default();
+        match base64::engine::general_purpose::STANDARD.decode(data) {
+            Ok(bytes) => {
+                let purpose = Purpose::of(&name);
+                INBOX.with(|slot| {
+                    if let Some(inbox) = slot.borrow().as_ref() {
+                        inbox.borrow_mut().push((purpose, name, bytes));
+                        pushed = true;
+                    }
+                });
+            }
+            Err(e) => log::error!("delivered file {name} is not valid base64: {e}"),
+        }
+    }
+    if pushed {
+        repaint();
+    }
+}
+
 /// 宿主是否可用（不在 OTools 里时退回上游的浏览器行为：下载文件）。
 pub fn available() -> bool {
     host_available()

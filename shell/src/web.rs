@@ -78,6 +78,8 @@ pub fn start() {
                 }),
             )
             .await;
+        // 宿主投递了文件：把 egui 从空闲里叫醒，下一帧 `logic` 取件。
+        install_deliver_listener();
         if let Some(el) = document.get_element_by_id(LOADING_ID) {
             match result {
                 Ok(()) => el.remove(),
@@ -85,6 +87,20 @@ pub fn start() {
             }
         }
     });
+}
+
+/// 监听宿主投递（`shell/index.html` 读完字节后派发的 `otools-open-files-arrived`）。
+///
+/// egui 空闲时会自己停下（本仓还按帧号轮询语言，停下后轮询也不再跑），所以必须有
+/// 一个事件把它叫醒，投递才能在一秒内变成界面上的文件。
+fn install_deliver_listener() {
+    let Some(window) = web_sys::window() else { return };
+    let closure = wasm_bindgen::closure::Closure::wrap(Box::new(crate::otools::repaint) as Box<dyn FnMut()>);
+    let _ = window.add_event_listener_with_callback(
+        "otools-open-files-arrived",
+        closure.as_ref().unchecked_ref::<js_sys::Function>(),
+    );
+    closure.forget();
 }
 
 fn query() -> String {
@@ -213,6 +229,9 @@ impl eframe::App for WebShell {
         }
         self.take_drops(ctx);
         self.take_path_prompt(ctx);
+        // 宿主投递的「打开方式」：系统里双击已绑定扩展名的文件 → 推进 inbox，
+        // 下面的循环与「文件 ▸ 打开」、拖放走同一条分流逻辑。
+        crate::otools::drain_delivered();
         let pending = std::mem::take(&mut *self.inbox.borrow_mut());
         for (purpose, name, bytes) in pending {
             self.handle(purpose, &name, &bytes);
