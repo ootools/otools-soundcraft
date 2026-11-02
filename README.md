@@ -153,7 +153,7 @@ unset RUSTC_WRAPPER                 # 它会把 cargo 指向旧 rustc
 node scripts/build-wasm.mjs         # trunk build --release → dist/
 ```
 
-需要 rustc ≥ 1.95 与 wasm32-unknown-unknown 目标（egui 0.36 的要求）。
+需要 rustc ≥ 1.95 与 wasm32-unknown-unknown 目标（egui 0.37 的要求）。
 trunk 首次运行会下载 wasm-bindgen-cli 与 wasm-opt（GitHub release），国内网络可能要直连。
 
 ## 本地验证

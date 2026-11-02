@@ -36,7 +36,7 @@ soundcraft-video = { path = "../upstream/crates/video" }
 soundcraft-clap-host = { path = "../upstream/crates/clap-host" }
 soundcraft-vst3-host = { path = "../upstream/crates/vst3-host" }
 soundcraft-au-host = { path = "../upstream/crates/au-host" }
-egui = { version = "0.36", default-features = false }
+egui = { version = "0.37", default-features = false, features = ["default_fonts", "monochrome_emoji_fonts"] }
 log = { version = "0.4", default-features = false }
 serde_json = { version = "1", features = ["float_roundtrip"] }
 # 只在「不在 OTools 里」（把 dist 拖进普通浏览器）时用它弹浏览器选文件框；插件内不走。
@@ -46,7 +46,7 @@ rfd = "0.17"
 # 注意：`rfd` 只为「不在 OTools 里」的浏览器兜底保留（上游网页版用它弹选文件框）；
 # 插件内打开/保存都走宿主对话框（`src/otools.rs`）。
 [target."cfg(target_arch = \"wasm32\")".dependencies]
-eframe = { version = "0.36", default-features = false, features = ["persistence", "default_fonts", "wgpu", "accesskit"] }
+eframe = { version = "0.37", default-features = false, features = ["persistence", "default_fonts", "wgpu", "accesskit"] }
 base64 = "0.22"
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
@@ -74,3 +74,20 @@ features = [
 opt-level = 3
 lto = "thin"
 codegen-units = 16
+
+# 与上游 `upstream/Cargo.toml` 的 `[patch.crates-io]` 保持一致：上游把整个 egui 家族
+# 钉在 storytold/egui 的审查 commit 上。本 crate 是独立 workspace，不写这段就会解析到
+# crates.io 的 egui，与上游 `craft-ui` / `soundcraft-ui-egui` 期望的 API 对不上。
+[patch.crates-io]
+ecolor = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+emath = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+epaint = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+epaint_default_fonts = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui-winit = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui-wgpu = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_glow = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_extras = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_kittest = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_system_font_provider = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+eframe = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }

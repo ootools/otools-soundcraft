@@ -1,5 +1,5 @@
 diff --git a/crates/ui-egui/src/fonts.rs b/crates/ui-egui/src/fonts.rs
-index 46d50ba..cca9c46 100644
+index 514c10a..ce88ca0 100644
 --- a/crates/ui-egui/src/fonts.rs
 +++ b/crates/ui-egui/src/fonts.rs
 @@ -4,6 +4,19 @@
@@ -22,7 +22,7 @@ index 46d50ba..cca9c46 100644
  /// (path, ttc index) candidates for regular and bold UI text, by platform.
  const REGULAR: &[(&str, u32)] = &[
      ("/System/Library/Fonts/HelveticaNeue.ttc", 0),
-@@ -127,6 +140,12 @@ pub fn definitions() -> FontDefinitions {
+@@ -132,6 +145,12 @@ pub fn definitions(system_fonts: bool) -> FontDefinitions {
              family.push("system-hangul".into());
          }
      }
