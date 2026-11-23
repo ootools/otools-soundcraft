@@ -33,7 +33,8 @@ for (const raw of readFileSync(src, "utf8").split(/\r?\n/)) {
   if (parts.length < 2 || parts.length > 3) {
     throw new Error(`zh-CN.tsv: 需要 2 或 3 个制表符分隔字段：${raw}`);
   }
-  const [en, zh] = parts;
+  const unesc = (s) => s.replace(/\\n/g, "\n").replace(/\\t/g, "\t").replace(/\\\\/g, "\\");
+  const [en, zh] = [unesc(parts[0]), unesc(parts[1])];
   if (!en || !zh) throw new Error(`zh-CN.tsv: 空字段：${raw}`);
   if (seen.has(en) && seen.get(en) !== zh) {
     throw new Error(`zh-CN.tsv: 「${en}」有两条不同的译文`);

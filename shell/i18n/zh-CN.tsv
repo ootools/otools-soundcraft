@@ -1177,3 +1177,877 @@ Peak dB	峰值 dB
 Length ratio	长度比率
 Speed	速度
 No parameters.	无参数。
+ "{name}" is used by {users}	 “{name}”被 {users} 使用
+ (alternate playlist)	 （备用播放列表）
+ (resampled to the device rate)	 （已重采样到设备采样率）
+ It is used by {users}	 它被 {users} 使用
+ The file stays on disk.	 文件仍留在磁盘上。
+ The files stay on disk.	 文件仍留在磁盘上。
+ They are used by {users}	 它们被 {users} 使用
+ {n} of the files are used by {users}	 其中 {n} 个文件被 {users} 使用
+% of all commits	%（占全部提交）
+(redo) {r}	（重做）{r}
++	+
++Bin	+Bin
++LOC	+LOC
+0 dB	0 dB
+0 frames	0 帧
+0 samples	0 采样
+0.5 seconds	0.5 秒
+1	1
+1 bar	1 小节
+1 foot	1 英尺
+1 frame	1 frame
+1 ms	1 ms
+1 sample	1 采样
+1 second	1 秒
+1 subframe	1 subframe
+1 track	1 条轨道
+1 {what}	1 {what}
+1 — Shortest	1 — 最短
+1/16 note	1/16 音符
+1/2 frame	1/2 frame
+1/2 note	1/2 音符
+1/32 note	1/32 音符
+1/4 frame	1/4 frame
+1/4 note	1/4 音符
+1/64 note	1/64 音符
+1/8 note	1/8 音符
+10 ms	10 ms
+10 samples	10 采样
+100 dB in 1.00 s	1.00 秒内 100 dB
+100 ms	100 ms
+100 samples	100 采样
+1000 samples	1000 采样
+10000 samples	10000 采样
+16-bit	16 位
+2	2
+2 samples	2 采样
+2.00 seconds	2.00 秒
+24-bit	24 位
+25 minutes	25 分钟
+29.97 Drop	29.97 Drop
+3	3
+3 Seconds	3 秒
+30 frames	30 帧
+4	4
+5	5
+5 frames	5 frames
+5 minutes	5 分钟
+5.0	5.0
+5.0.2	5.0.2
+5.0.4	5.0.4
+5.1	5.1
+5.1.2	5.1.2
+5.1.4	5.1.4
+59.94 Drop	59.94 Drop
+6.0	6.0
+6.1	6.1
+7.0	7.0
+7.0 SDDS	7.0 SDDS
+7.0.2	7.0.2
+7.0.4	7.0.4
+7.0.6	7.0.6
+7.1	7.1
+7.1 SDDS	7.1 SDDS
+7.1.2	7.1.2
+7.1.4	7.1.4
+7.1.6	7.1.6
+9.0.4	9.0.4
+9.0.6	9.0.6
+9.1.4	9.1.4
+9.1.6	9.1.6
+@{}: {} PRs, {} commits, +{} / −{} lines (Δ {}), +{} / −{} binary assets, {} – {}	@{}：{} 个 PR，{} 个提交，+{} / −{} 行（Δ {}），+{} / −{} 二进制资产，{} – {}
+A browser with WebGPU or WebGL2 is required.	需要支持 WebGPU 或 WebGL2 的浏览器。
+ARA	ARA
+About	关于
+Active audio ends at {seconds:.2} seconds	活跃音频在 {seconds:.2} 秒处结束
+Active plugin instances: {plugins}	运行中的插件实例：{plugins}
+Add New Playlists	新建播放列表
+Add a row below	在下方添加一行
+Additional Empty Bars in the Score Editor	乐谱编辑器末尾的空白小节
+Adds ±1 LSB triangular dither when writing 16- or 24-bit files. Leave it off when the master chain already dithers.	写 16 或 24 位文件时加 ±1 LSB 三角抖动。母线链已有抖动时请保持关闭。
+Adjusting Pinned Area Resizes Tracks	调整固定区会缩放轨道
+Advanced Meter Type Settings	高级电平表类型设置
+Advanced Video Logging	高级视频日志
+After Every Pass	每轮之后
+After Write Pass, Switch To	写入轮后切换到
+All Files	全部文件
+All MIDI	全部 MIDI
+All audio clips checked	已检查全部音频片段
+All devices	全部设备
+All — Summed	全部 — 求和
+Allow External Track-Arm Commands in Local Mode	本地模式下允许外部轨道布防命令
+Allow External Transport Commands in Local Mode	本地模式下允许外部走带命令
+Allow Latch Prime in Stop	停止时允许 Latch 预置
+Allow Sends to Persist During Low-Latency Monitoring	低延迟监听时保留发送
+Always	总是
+Always Fill Channel Strips when Banking	翻页时总是填满通道条
+Always On	始终开启
+Always Show Assignable Knob Highlight	总是显示可分配旋钮高亮
+Always Use 32-bit	总是使用 32 位
+Anonymous Usage Data	匿名使用数据
+Applies across the edit selection (constant: at the insertion point; scale: factor = end / start; stretch: factor = start / end).	作用于整个编辑选区（constant：在插入点；scale：系数 = 终点 / 起点；stretch：系数 = 起点 / 终点）。
+At Bottom	在底部
+At Insertion or Selection	在插入点或选区
+At Timecode Lock	时间码锁定时
+Audio	音频
+Audio Device	音频设备
+Audio During Fast Forward and Rewind	快进与倒带时的声音
+Audio Engine Errors Stop All Linked Systems	音频引擎出错时停止所有联动系统
+Audio Track Record Lock	音频轨道录音锁定
+Audio input: {what} {then}	音频输入：{what} {then}
+Audio output: {cause} {then}	音频输出：{cause} {then}
+Audio: {}	音频：{}
+AudioSuite · {title}	AudioSuite · {title}
+Auto Accept Adjust Bounds	自动接受调整边界
+Auto Backup	自动备份
+Auto Insert Default Plugins from Control Surfaces	从控制台表面自动插入默认插件
+Auto Pan	自动声像
+Auto Rename...	自动重命名...
+Auto Rename…	自动重命名…
+Auto-Adjust Pinned Area for Tracks	自动调整轨道固定区
+Auto-Name Memory Locations when Playing	播放时自动命名记忆位置
+Auto-Name Separated Clips	自动命名分割出的片段
+Auto-Switch Input Language	自动切换输入语言
+Automatic Analysis on Tick-Based Tracks	基于小节的轨道自动分析
+Automatically Copy Files on Import	导入时自动复制文件
+Automatically Create Click Track in New Sessions	新会话自动创建节拍轨道
+Automatically Create Fades	自动创建淡变
+Automatically Download New Shared Tracks	自动下载新的共享轨道
+Automation Glide Time	自动化滑动时间
+Automation Match Time	自动化匹配时间
+Automation mode	自动化模式
+Automation mode for {}	{} 的自动化模式
+Autosave failed: {e}	自动保存失败：{e}
+Back/Forward Amount	快进/倒退量
+Back/Forward Time Scale	快进/倒退时间标尺
+Backup Every	备份间隔
+Basics	基础
+Beat Analysis	节拍分析
+Binary assets added	已添加二进制资产
+Binary assets removed	已移除二进制资产
+Bounce	Bounce
+Bounce Mix…	混缩混音…
+Bounced {} (peak {:.1} dBFS, {:.1} LUFS)	已混缩 {}（峰值 {:.1} dBFS，{:.1} LUFS）
+Bouncing {name}	正在混缩 {name}
+Bouncing {} ({:.0}%)	正在混缩 {}（{:.0}%）
+Bus	Bus
+Bus name: {name}	总线名：{name}
+C3	C3
+C4	C4
+CLAP	CLAP
+Calibration Reference Level	校准参考电平
+Cancel Zoom Toggle	取消缩放切换
+Cannot record: no MIDI input device is connected (Setup > Playback Engine lists them)	无法录音：未连接 MIDI 输入设备（“设置 > 回放引擎”里列出设备）
+Cannot record: the audio engine has not finished the previous record pass yet (is the audio device running?)	无法录音：音频引擎尚未结束上一轮录音（音频设备在运行吗？）
+Cannot record: {err}	无法录音：{err}
+Category & Manufacturer	类别与制造商
+Change	更改
+Change Documentation and Settings Location	更改文档与设置位置
+Change Project Media Cache Location	更改工程媒体缓存位置
+Change Sound Libraries Location	更改声音库位置
+Channel	通道
+Channel format	通道格式
+Check for Updates	检查更新
+Check for Updates…	检查更新…
+Check the audio device, then use Reconnect audio device in Setup › Playback Engine.	检查音频设备，然后在“设置 › 回放引擎”里使用“重连音频设备”。
+Check the disk, then record again.	检查磁盘后重新录音。
+Chords	和弦
+Classic	经典
+Click to add a MIDI clip to {name} at the insertion point.	点击在插入点向 {name} 添加 MIDI 片段。
+Clip Auto Fade In/Out Length	片段自动淡入/淡出长度
+Clip Gain Nudge Value	片段增益微调步长
+Clip Indication	片段指示
+Clip List Selection Follows Edit Selection	片段列表选区跟随编辑选区
+Clip Looping	片段循环
+Clips/Markers	片段/标记
+Close folder	收起文件夹
+Close “{name}” without saving?	不保存直接关闭“{name}”？
+Cloud Storage Services	云存储服务
+Coalesce when Removing Members from a VCA Group	从 VCA 编组移除成员时合并
+Color Break High	分色上限
+Color Break Low	分色下限
+Comments for {}	{} 的备注
+Commit	提交
+Commits	Commits
+Company	公司
+Compensate Hardware Inputs	补偿硬件输入
+Compensate Side Chains	补偿侧链
+Compressor/Limiter Only	仅压缩器/限制器
+Configuration {n}	配置 {n}
+Console-Style Input Monitoring Indicators	控制台风格输入监听指示
+Contributors	贡献者
+Controlled Device Type	受控设备类型
+Controllers	控制器
+Convert Copied Files to Session Format	复制文件时转换为会话格式
+Convert Imported WAV Files to Broadcast Wave	导入的 WAV 转为 Broadcast Wave
+Could not open {path}: {e}	无法打开 {path}：{e}
+Couldn't recover “{name}”: {e}	无法恢复“{name}”：{e}
+Create New Playlists when Loop Recording	循环录音时新建播放列表
+Create up to 128 tracks at a time.	一次最多创建 128 条轨道。
+Current Session 5.x to 7.x/9.x	当前会话 5.x → 7.x/9.x
+Current Session 7.x/9.x to 5.x	当前会话 7.x/9.x → 5.x
+Current Session Fold Down	当前会话折叠
+Current Session Includes LFE in Fold Down	当前会话折叠包含 LFE
+Current Session Surround to Stereo	当前会话环绕声转立体声
+Custom Fast Forward/Rewind Speed	自定义快进/倒带速度
+Custom Shuttle Lock Speed	自定义穿梭锁定速度
+DC Rmv	DC 去除
+DSP Management	DSP 管理
+Dark	深色
+Data Collection and Personalization	数据收集与个性化
+DeEss	DeEss
+Default ({default})	默认（{default}）
+Default Automatic Naming to English	自动命名默认用英文
+Default Clip Color Coding	默认片段配色
+Default Crossfade	默认交叉淡变
+Default Dynamics	默认动态
+Default Dynamics Insert Slot	默认动态插入槽位
+Default EQ	默认 EQ
+Default EQ Insert Slot	默认 EQ 插入槽位
+Default Fade In	默认淡入
+Default Fade Out	默认淡出
+Default Handle Length	默认柄长
+Default Input Gain	默认输入增益
+Default Plugin	默认插件
+Default Settings	默认设置
+Default Sliced-Loop Fade	默认切片循环淡变
+Default Track Color Coding	默认轨道配色
+Degree of Thinning	瘦身程度
+Delay Compensation for External Devices	外部设备延迟补偿
+Delay after Play Command	播放命令后延迟
+Delay before Locking to Longitudinal Timecode	锁定纵向时间码前的延迟
+Delay before Locking to Serial Timecode	锁定串行时间码前的延迟
+Delete marker	删除标记
+Delete note	删除音符
+Desktop Drag-and-Drop Conforms to Session Tempo	桌面拖放贴合会话速度
+Destructive Punch File Length	破坏性插入录音文件长度
+Detailed Tool Tips	详细工具提示
+Digital VU	数字 VU
+Direct Gain	直达声增益
+Direct Solo	直达声独奏
+Direct to Rear Surrounds	直达后环绕
+Disable	禁用
+Disable DSP Mode when Disabling Record and Input	关闭录音与输入时禁用 DSP 模式
+Disable Input Monitoring when Disarming a Stopped Track	停止的轨道解除布防时关闭输入监听
+Disabled While Looping	循环时禁用
+Display	显示
+Display Events as Modified by Real-Time Properties	事件按实时属性修饰后显示
+Display Waveforms in Low Resolution While Loading	加载时以低分辨率显示波形
+Display name	显示名
+Dither (TPDF)	Dither (TPDF)
+Divergence (0 = point source)	发散度（0 = 点声源）
+Do Not Convert Sample Rate on Import	导入时不转换采样率
+Docked MIDI Editor	停靠的 MIDI 编辑器
+Dotted	附点
+Double-Click Selects Automation Breakpoints	双击选中自动化断点
+Double-Clicking a MIDI Clip Opens	双击 MIDI 片段打开
+Double-Clicking an Audio Clip Opens	双击音频片段打开
+Download failed: {}	下载失败：{}
+Downmix to Surrounds	下混到环绕声道
+Drop an audio file here	把音频文件拖到这里
+Drop an audio file on this window	把音频文件拖到此窗口
+Drums	鼓
+Dynamic Transport Follows Selection During Playback	动态走带播放时跟随选区
+EQ and Dynamics Cycling Starts at Insert	EQ/动态轮换从插入开始
+EQ1	EQ1
+EQ7	EQ7
+Edit Insertion Follows Scrub and Shuttle	编辑插入点跟随修剪与穿梭
+Edit Selection Follows Clip List Selection	编辑选区跟随片段列表选区
+Edit Window Default Length	编辑窗口默认长度
+Edit Window Follows Banking	编辑窗口跟随翻页
+Edit Window Follows Selection	编辑窗口跟随选区
+Editing	编辑
+Effect	效果
+Elevation (height speakers)	高度角（顶部扬声器）
+Enable	启用
+Enable Analog Console Processing in New Sessions	新会话启用模拟台处理
+Enable Automation in Record	录音时启用自动化
+Enable DSP Mode for Record-Armed or Input-Monitored Tracks	布防或输入监听的轨道启用 DSP 模式
+Enable Elastic Audio on New Tracks	新轨道启用弹性音频
+Enable GPU Processing	启用 GPU 处理
+Enable Session File Auto Backup	启用会话文件自动备份
+Enable Track Notes Dialog	启用轨道备注对话框
+End tempo (BPM)	结束速度（BPM）
+English	英语
+Expander/Gate Only	仅扩展器/噪声门
+Exponential	指数
+Export — MIDI	导出 — MIDI
+Export — MusicXML	导出 — MusicXML
+Export — Selected Tracks as New Session	导出 — 选中轨道为新会话
+Exported {} clip(s) to {}	已导出 {} 个片段到 {}
+Extend	扩展
+Extract	提取
+Factory Default	出厂默认
+Fades Dialog Preview Post-Roll	淡变对话框预览后卷
+Fades Dialog Preview Pre-Roll	淡变对话框预览前卷
+File — Print Score	文件 — 打印乐谱
+File — Save As Template	文件 — 另存为模板
+Fills the selection on the selected tracks with a new clip.	在选中轨道的选区里填入新片段。
+First	第一个
+First Invite Shares All Tracks	首次邀请共享全部轨道
+First clip: {}	首个片段：{}
+First commit	首个提交
+Fit To	适配到
+Fit to Window	适配窗口
+Follow Main Time Scale	跟随主时间标尺
+Follow Session Settings	跟随会话设置
+FreqShft	FreqShft
+Frequency Shifter	移频器
+Function Tool Tips	功能工具提示
+GRID	网格
+Gain Reduction Meter Type	增益缩减表类型
+General Color	常规颜色
+Global MIDI Playback Offset	全局 MIDI 回放偏移
+Go to End (End)	到结尾（End）
+Grab bag	杂项
+Grid mode ({fkey}; again for Relative); Shift-click: Snap to Grid in the other modes	网格模式（{fkey}；再按一次进入 Relative）；Shift 点击：在其他模式里对齐网格
+Group for {}	{} 的编组
+HP Freq	HP 频率
+HP Q	HP Q
+Handle Length	柄长
+Hide automation	隐藏自动化
+High	高
+Highest	最高
+Horizontal Zoom	水平缩放
+Hz	Hz
+Identify beat bars	识别节拍小节线
+Ignore Track Arming	忽略轨道布防
+Import Audio	导入音频
+Import MIDI	导入 MIDI
+Import Sliced Loops as Clip Groups	切片循环导入为片段组
+Import — Clip Groups	导入 — 片段组
+Import — Session Data	导入 — 会话数据
+Import — Video	导入 — 视频
+Imported {name}	已导入 {name}
+Importing {name}{more}	正在导入 {name}{more}
+In 1-{}	在 1-{}
+In {}	在 {}
+Include Control Changes in Undo Queue	控制器变化纳入撤销队列
+Include Sends in Trim Mode	修剪模式包含发送
+Infinite	无限
+Input for {}	{} 的输入
+Input monitoring for {}	{} 的输入监听
+Input trim (dB)	输入微调（dB）
+Insert {} for {}	为 {} 插入 {}
+Instrument for {}	{} 的乐器
+Integration Time	积分时间
+Join us on Discord	来 Discord 交流
+Joining a Project Downloads All Shared Tracks	加入工程时下载全部共享轨道
+K-12	K-12
+K-14	K-14
+K-20	K-20
+Keep Most Recent Session Backups	保留最近的会话备份
+Keep Unused Folders on Session Close	关闭会话时保留未用文件夹
+Key	键
+LP Freq	LP 频率
+LP Q	LP Q
+Language	语言
+Last	最后一个
+Last commit	最后一个提交
+Latch Audio Tracks	音频轨道 Latch
+Latch Fast Forward and Rewind	快进/倒带 Latch
+Latch Switch Controls in Touch Mode	Touch 模式下开关控件用 Latch
+Latch Until Next Event	Latch 到下一事件
+Levels of Undo	撤销级数
+Light	浅色
+Line delta	行变化
+Linear Extended	线性扩展
+Lines +/−	行数 +/−
+Lines added	新增行数
+Lines deleted	删除行数
+Link Object and Audio Recording	对象与音频录音联动
+Link Record and Play Faders	录音推子与回放推子联动
+Link to Tempo	链接到速度
+Linked Systems	联动系统
+Live Peak	实时峰值
+Live RMS	实时 RMS
+LoFi	LoFi
+Load Sample…	加载采样…
+Loading SoundCraft…	正在加载 SoundCraft…
+Local Waveform Cache Versions	本地波形缓存版本数
+Location	位置
+Lock File Extension	锁定文件扩展名
+Logarithmic	对数
+Logging	日志
+Loop Length	循环长度
+Loop Rec	循环录音
+Loop Until End of Session or Next Clip	循环到会话结尾或下一片段
+Loop-recorded {} take(s)	循环录音了 {} 遍
+Lower Gain	下部增益
+Lower Solo	下部独奏
+MIDI / Score Editor Display	MIDI / 乐谱编辑器显示
+MIDI Beat Clock	MIDI 节拍时钟
+MIDI Input Monitoring Follows Selected Track	MIDI 输入监听跟随选中轨道
+MIDI Merge	MIDI 合并
+MIDI Merge Release Mode	MIDI 合并释放模式
+MIDI Note 60	MIDI 音符 60
+MIDI Note Color Shows Velocity	MIDI 音符颜色显示力度
+MIDI Notes and Controllers	MIDI 音符与控制器
+MIDI Timecode	MIDI 时间码
+MIDI input	MIDI 输入
+MIDI input was dropped during the take: it is incomplete, and notes held at that point end there	录音期间 MIDI 输入中断：这一遍不完整，按住的音符在该处结束
+Machine Chases Memory Location	机器追逐记忆位置
+Machine Control	机器控制
+Machine Cues Intelligently	机器智能定位
+Machine Follows Edit Insertion and Scrub	机器跟随编辑插入点与修剪
+Main output: {}	主输出：{}
+Manual	Manual
+Manual Trigger	手动触发
+Manually	手动
+Marker Colors	标记颜色
+Master Meters	主输出电平表
+Max	最大
+Merged PRs	已合并 PR
+Meter Type	电平表类型
+Meter denominator	拍号分母
+Meter numerator	拍号分子
+Metering	电平计量
+Middle C	中央 C
+Minimum Sync Delay	最小同步延迟
+Miscellaneous	杂项
+Mix Window Follows Banking	混音台窗口跟随翻页
+Mix Window Follows Selection	混音台窗口跟随选区
+Mixing	混音
+Mod Source	调制源
+ModDly	ModDly
+Mode	模式
+Model	模型
+Models	模型
+Modern	现代
+Modify Group	修改编组
+Mouse Wheel Scrolling Snaps to Track	滚轮滚动吸附轨道
+MusicXML	MusicXML
+MusicXML...	MusicXML...
+Mute Record-Armed Tracks While Stopped	停止时静音布防轨道
+Mute for {}	{} 的静音
+Name (A–Z)	名称（A–Z）
+Name Dialog	命名对话框
+Never	从不
+New Session 5.x to 7.x/9.x	新会话 5.x → 7.x/9.x
+New Session 7.x/9.x to 5.x	新会话 7.x/9.x → 5.x
+New Session Fold Down	新会话折叠
+New Session Includes LFE in Fold Down	新会话折叠包含 LFE
+New Session Surround to Stereo	新会话环绕声转立体声
+New Tracks Are Shared	新轨道默认共享
+New Tracks Default to Tick Timebase	新轨道默认小节时基
+New Tracks… ({})	新建轨道…（{}）
+No Audio Units found	未找到 Audio Units 插件
+No CLAP plugins found	未找到 CLAP 插件
+No Change	无变化
+No Files	无文件
+No MIDI input device found	未找到 MIDI 输入设备
+No VST3 plugins found	未找到 VST3 插件
+No Video track — File › Import › Video…	没有视频轨道 — 文件 › 导入 › 视频…
+No audio input: {e}	没有音频输入：{e}
+No contributor data was built into this copy.	本版本未内置贡献者数据。
+No engine	无引擎
+No model credits were built into this copy.	本版本未内置模型致谢。
+No sample	无采样
+No track is record-enabled: click the R button on the track to record.	没有轨道开启录音：点击轨道上的 R 按钮再录音。
+Noise Burst Peak Protection	噪声突发峰值保护
+Non-Linear Device	非线性设备
+Non-Linear Transport Error Suppression	非线性走带错误抑制
+Not available yet.	暂不可用。
+Note	音符
+Note Display	音符显示
+Note velocity	音符力度
+Nothing to record on yet: add a track with Track › New…, then click its R button.	还没有可录音的轨道：用“轨道 › 新建…”加一条轨道，再点它的 R 按钮。
+Nothing was recorded: the record-enabled tracks received no input	没有录到内容：布防的轨道没有收到输入
+Number	编号
+Number Keys 1–5 Control	数字键 1–5 控制
+Number of Loops	循环次数
+Number of Places	定位次数
+Numeric Keypad	数字小键盘
+Offline Processing	离线处理
+On	开
+On Exiting Trim Mode	退出修剪模式时
+Online Recording Starts	在线录音开始时
+Only During Playback	仅回放时
+Open Session	打开会话
+Open Unresourced DSP Plugins as Native	无资源的 DSP 插件按原生打开
+Open folder	展开文件夹
+Opened {name}	已打开 {name}
+Opened {name} ({missing} missing media)	已打开 {name}（{missing} 个媒体缺失）
+Organize Plugin Menus By	插件菜单按此分类
+Organize Track I/O Menus By	轨道 I/O 菜单按此分类
+Original Track Height While Pinned	固定时保持原轨道高度
+Output for {}	{} 的输出
+Output window	输出窗口
+PPM BBC	PPM BBC
+PPM DIN	PPM DIN
+PPM Digital	PPM 数字
+PPM EBU	PPM EBU
+PPM Nordic	PPM 北欧
+PRs	PRs
+Pan	声像
+Panel layout could not be restored: {error}	面板布局未能恢复：{error}
+Panel move was not applied: {error}	面板移动未能应用：{error}
+Panel windows could not be arranged: {error}	面板窗口未能排列：{error}
+Parallel Task Optimization	并行任务优化
+Path	路径
+Peak / Clip	峰值 / 削波
+Peak Hold	峰值保持
+Pencil Resolution for Controller Data	控制器数据画笔分辨率
+Personalize the Experience	个性化体验
+Pitch	音高
+Plate	板式混响
+Play Start Follows Timeline Selection	播放起点跟随时间线选区
+Play Start Latency	播放起点延迟
+Playback stopped: {cause} {then}	回放已停止：{cause} {then}
+Plugin Controls Default to Auto-Enabled	插件控件默认自动启用
+Polyphonic	复音
+Portuguese (Brazil)	葡萄牙语（巴西）
+Pre-fader	推子前
+Pre/Post	推子前/后
+Preserve Fades when Editing	编辑时保留淡变
+Preset name	预设名
+Presets v	预设 v
+Prevent Others from Overwriting an Open Session	防止他人覆盖已打开的会话
+Prevent Tearing	防止画面撕裂
+Priority Compressor/Limiter	优先压缩器/限制器
+Priority Expander/Gate	优先扩展器/噪声门
+Processes the selected clips and replaces them with rendered audio.	处理选中的片段并用渲染好的音频替换。
+Processing	处理中
+Processor	处理器
+Punch In Frame Offset	插入录音帧偏移
+Punch Out Frame Offset	退出录音帧偏移
+Punch Recording	插入录音
+Punch Recording Crossfade Length	插入录音交叉淡变长度
+Q	Q
+Quantize strength	量化强度
+REL GRID	REL GRID
+RMS	RMS
+Randomize Marker Color Upon Creation	创建标记时随机配色
+Rate (BPM)	速率（BPM）
+Readout	读数
+Real name	真实姓名
+Recall Memory Location at Original Track	在原轨道调出记忆位置
+Receive Play Selections	接收播放选区
+Receive Solos	接收独奏
+Reconnect it, then use Reconnect audio device in Setup › Playback Engine.	重新连接后，在“设置 › 回放引擎”里使用“重连音频设备”。
+Record (F12 or Cmd+Space)	录音（F12 或 Cmd+Space）
+Record Enable Buttons	录音布防按钮
+Record enable for {}	{} 的录音布防
+Recorded {} clip(s)	已录制 {} 个片段
+Recording at 24-bit uses {per_min:.1} MB per mono track-minute	24 位录音每条单声道轨道每分钟约 {per_min:.1} MB
+Recording stopped: {cause} The take is kept up to there. {then}	录音已停止：{cause}录音保留到该处。{then}
+Recording stopped: {what} The take is kept up to there. {then}	录音已停止：{what}录音保留到该处。{then}
+Recovered “{name}”, but {n} audio file(s) are missing. Save it to keep the changes.	已恢复“{name}”，但缺失 {n} 个音频文件。保存以保留更改。
+Recovered “{name}”. Save it to keep the changes.	已恢复“{name}”。保存以保留更改。
+Rectify	整流
+Redo {l}	重做 {l}
+Reduce Visual Effects	减少视觉特效
+Reduce visual effects	减少视觉特效
+Remote Mode	远程模式
+Remove	移除
+Remove Range Selection after Opening a MIDI or Score Editor	打开 MIDI/乐谱编辑器后清除范围选区
+Remove Range Selection after Zooming In	放大后清除范围选区
+Remove Sync Point	移除同步点
+Remove configuration	移除配置
+Remove this row	移除此行
+Remove {what} from the session?	从会话中移除{what}？
+Rename Selected Clips	重命名选中片段
+Rename…	重命名…
+Rendered File Bit Depth	渲染文件位深
+Repeat	重复
+Reserve Voices for Preview in Context	为上下文试听保留声部
+Reset Advanced Meter Settings	重置高级电平表设置
+Reset Logging	重置日志
+Reset “Don’t Show This Again” Settings	重置“不再显示”设置
+Return to Zero (Home)	回到起点（Home）
+Reverse the order	反转顺序
+Revert “{name}” to its last saved version?	把“{name}”恢复到上次保存的版本？
+Ring Modulator	环形调制器
+RingMod	RingMod
+Room	房间混响
+Routing Coefficients	路由系数
+Routing Folder Track	路由文件夹轨道
+SHUFFLE	齐动
+SLIP	滑动
+SPOT	对齐
+Sample Peak	采样峰值
+Sample Rate Conversion Quality	采样率转换质量
+Satur	Satur
+Save Logs	保存日志
+Save Session As	会话另存为
+Save changes to “{name}” before closing?	关闭前保存对“{name}”的更改？
+Saved preset {clean}	已保存预设 {clean}
+Score composer	乐谱作曲者
+Score title	乐谱标题
+Scroll Into View	滚动到可见处
+Scroll to Track Banks Controllers	滚动到轨道翻页控制器
+Search inputs…	搜索输入…
+Search outputs…	搜索输出…
+Select an instrument track	选择一条乐器轨道
+Send Fully Overlapped Clips to a Playlist While Editing	编辑时把完全重叠的片段送入播放列表
+Send Fully Overlapped Clips to a Playlist While Recording	录音时把完全重叠的片段送入播放列表
+Send Pans Default to Follow Main Pan	发送声像默认跟随主声像
+Send level	发送电平
+Send level fader	发送电平推子
+Send {which}	发送 {which}
+Send {which} level for {track}	{track} 的发送 {which} 电平
+Send {which} to {name}: {db} dB\nClick for the send fader · drag vertically to adjust · Shift-drag for fine control · Alt-click for 0 dB · right-click for options	发送 {which} 到 {name}：{db} dB\n点击打开发送推子 · 垂直拖动调整 · Shift 拖动微调 · Alt 点击回到 0 dB · 右键打开选项
+Send {which} · Choose destination	发送 {which} · 选择目标
+Send {} for {}	{} 的发送 {}
+Send {} · {}	发送 {} · {}
+Sends Default to	发送默认指向
+Sensitivity	灵敏度
+Separate Clip Operates on All Related Takes	分割片段作用于全部关联遍次
+Separate Grid Settings when Zoomed In	放大时网格设置独立
+Session file: {p}	会话文件：{p}
+Session media: {} files, {:.1} MB in memory (32-bit float)	会话媒体：{} 个文件，内存中 {:.1} MB（32 位浮点）
+Set Servo Lock at Play	播放时设置伺服锁定
+Shift (seconds)	偏移（秒）
+Show	显示
+Show Dashboard After Closing a Session	关闭会话后显示仪表板
+Show Dashboard Window at Startup	启动时显示仪表板窗口
+Show Insert Assignment Gain Reduction Meter	显示插入分配的增益缩减表
+Show Marker Lane Colors in Timeline Rulers	时间线标尺显示标记道颜色
+Show Marker Lane Colors in Tracks	轨道显示标记道颜色
+Show Send Assignment Level Meter	显示发送分配电平表
+Show Sound Libraries in Workspace Locations	工作区位置显示声音库
+Show Target Playlists after Sending a Clip Selection	送出片段选区后显示目标播放列表
+Show Track Gain Reduction Meter	显示轨道增益缩减表
+Show volume automation	显示音量自动化
+Shuffle is locked ({cmd}-click to unlock)	齐动已锁定（{cmd} 点击解锁）
+Shuffle mode ({fkey}); {cmd}-click locks it out	齐动模式（{fkey}）；{cmd} 点击锁定
+Shuttle	Shuttle
+SigGen	信号发生器
+Slewing	Slewing
+Slip mode ({fkey}); Shift-click adds Snap to Grid	滑动模式（{fkey}）；Shift 点击加对齐网格
+Slow Down	减速
+Small	小
+Smart Tool	智能工具
+Smart Tool Fade Adjustment	智能工具淡变调整
+Smooth and Thin Data after Pass	每轮后平滑瘦身数据
+Solo Independent of Linked State	独奏不受联动状态影响
+Solo for {}	{} 的独奏
+Some	部分
+Sort	排序
+SoundCraft Preferences	SoundCraft 偏好设置
+SoundCraft Session	SoundCraft 会话
+SoundCraft failed to start: {}	SoundCraft 启动失败：{}
+SoundCraft hit an internal error (see the log). Restart SoundCraft to be safe.	SoundCraft 发生内部错误（见日志）。稳妥起见请重启 SoundCraft。
+SoundCraft hit an internal error (see the log). Your changes were autosaved: save them, then restart SoundCraft.	SoundCraft 发生内部错误（见日志）。更改已自动保存：请保存文件后重启 SoundCraft。
+Speed Ramp	变速斜坡
+Speed Up	加速
+Spot mode ({fkey}); Shift-click adds Snap to Grid	对齐模式（{fkey}）；Shift 点击加对齐网格
+Standard VCA Logic for Group Attributes	编组属性用标准 VCA 逻辑
+Start (ticks)	起点（tick）
+Start tempo (BPM)	起始速度（BPM）
+Starting Number	起始编号
+Steep Breakpoint Smoothing Time	陡峭断点平滑时间
+Stop at Shuttle Speed Zero	穿梭速度归零时停止
+Stop recording before recovering other work.	先停止录音再恢复其他工作。
+Store Plugin State	存储插件状态
+Strip	分割
+Strip Silence Rectangles	静音分割矩形
+SubHarm	SubHarm
+SubSynth	SubSynth
+Subharmonic	次谐波
+Suffix	后缀
+Suppress Automation Write-To Warnings	抑制自动化写入目标警告
+Suppress Name Dialog when Creating New Playlists	新建播放列表时不出命名对话框
+Surround pan: drag the puck · double-click: front centre · Alt-drag: divergence	环绕声像：拖动圆钮 · 双击：正前中央 · Alt 拖动：发散度
+System	系统
+TShift	TShift
+Tab Respects Breakpoints in Automation Lanes	Tab 在自动化道上跳断点
+Table	表格
+Tagged Loop Files Only	仅限带标记的循环文件
+Tempo (BPM)	速度（BPM）
+Tempo Sync	速度同步
+Text for naming the clips that editing makes from the selected clips:	对选中片段编辑产生的新片段的命名文本：
+The audio engine did not answer when the pass ended: the last MIDI notes played may be missing from the take	录音轮结束时音频引擎没有应答：最后弹的 MIDI 音符可能没进这一遍
+The disk is too slow: this take has lost {lost} ms of input so far.	磁盘太慢：这一遍至今丢了 {lost} ms 的输入。
+This preference is not available yet.	该偏好暂不可用。
+Time (seconds)	时间（秒）
+Time Compression / Expansion	时间压缩 / 扩展
+Time Mode	时间模式
+Time Stretch	时间伸缩
+Timebase	时基
+Timeline Insertion and Play Start Follow Playback	时间线插入点与播放起点跟随回放
+Toggle Mix/Edit	切换混音台/编辑
+Touch Timeout	Touch 超时
+Touch/Latch	Touch/Latch
+Track Collaboration	轨道协作
+Track Meters	轨道电平表
+Track Position Numbers Stay with Hidden Tracks	轨道编号跟随隐藏轨道
+Track Type	轨道类型
+Track and Master Meter Types	轨道与主输出电平表类型
+Track and Master Meter Types Linked	轨道与主输出电平表类型联动
+Track kind	轨道种类
+Track view for {}	{} 的轨道视图
+Track — Save Track Preset	轨道 — 保存轨道预设
+Tracks and Groups	轨道与编组
+Tracks: {}	轨道数：{}
+Transmit Play Selections	发送播放选区
+Transmit Solos	发送独奏
+Transport Record Lock	走带录音锁定
+Triplet	三连音
+Type to search preferences	输入以搜索偏好
+UI Theme	界面主题
+UI frame time: {:.1} ms	界面帧耗时：{:.1} ms
+Undo steps: {}	撤销步数：{}
+Undo {l}	撤销 {l}
+Unfreeze	解冻
+Unknown label	未知标签
+Untitled	未命名
+Update check is not supported in the web browser.	网页版不支持检查更新。
+Upper Gain	上部增益
+Upper Solo	上部独奏
+Use Absolute Pan Linking	用绝对声像联动
+Use F11 for Wait for Note	用 F11 等待音符
+Use MIDI to Tap Tempo	用 MIDI 点拍
+Use Reconnect audio device in Setup › Playback Engine, or restart SoundCraft.	在“设置 › 回放引擎”里使用“重连音频设备”，或重启 SoundCraft。
+Use Reconnect audio device in Setup › Playback Engine.	在“设置 › 回放引擎”里使用“重连音频设备”。
+Use Separate Play and Stop Keys	播放与停止分开按键
+User Media and Settings Location	用户媒体与设置位置
+Username	用户名
+VCA Master	VCA 主控
+VST3	VST3
+VU	VU
+Value in {suffix}	以 {suffix} 计的值
+Velocity	力度
+Version {}	版本 {}
+Vertical MIDI Zoom	MIDI 纵向缩放
+Video Track	视频轨道
+Video Track Offline	视频轨道离线
+Views	视图
+Voice for {}	{} 的声部
+Warnings & Dialogs	警告与对话框
+Wet Solo	湿声独奏
+Whole File	整个文件
+Whole note	全音符
+Window Configurations	窗口配置
+Window configuration could not be restored: {error}	窗口配置未能恢复：{error}
+Without a name, the clips keep their names.	不填名字时片段保留原名。
+Zeros	Zeros
+Zoom Presets	缩放预设
+Zoom Toggle Follows Edit Selection	缩放切换跟随编辑选区
+Zoomer	缩放工具
+a clip on the timeline, which is removed too.	时间线上的一段片段（会一并移除）。
+audio	音频
+auto {}	自动 {}
+automation filesystem access is not granted: read authority is absent: {shown_path}	自动化文件系统访问未授权：缺少读取权限：{shown_path}
+automation filesystem access is not granted: write authority is absent: {shown_path}	自动化文件系统访问未授权：缺少写入权限：{shown_path}
+automation path rejected: a link that leads nowhere: {}	自动化路径被拒绝：指向空处的链接：{}
+automation path rejected: cannot resolve {}: {e}	自动化路径被拒绝：无法解析 {}：{e}
+automation path rejected: outside the read root {root}: {shown_path}	自动化路径被拒绝：超出读取根目录 {root}：{shown_path}
+automation path rejected: outside the read roots {}: {shown_path}	自动化路径被拒绝：超出读取根目录 {}：{shown_path}
+automation path rejected: outside the write root {root}: {shown_path}	自动化路径被拒绝：超出写入根目录 {root}：{shown_path}
+automation path rejected: outside the write roots {}: {shown_path}	自动化路径被拒绝：超出写入根目录 {}：{shown_path}
+automation path rejected: parent traversal below a folder that doesn't exist: {}	自动化路径被拒绝：父目录回溯到了不存在的文件夹之下：{}
+automation path rejected: path is empty	自动化路径被拒绝：路径为空
+automation path rejected: reserved device names are not allowed: {}	自动化路径被拒绝：不允许保留设备名：{}
+aux	aux
+blocks	块
+change meter	改拍号
+clip	片段
+clip_gain	clip_gain
+custom	自定义
+cut	cut
+day	天
+extreme	极端
+file	文件
+fit to window	适配窗口
+folder	文件夹
+front	前
+hour	小时
+insert	插入
+internal error (see the log)	内部错误（见日志）
+invert	invert
+is unavailable	不可用
+key:Down	key:Down
+key:Left	key:Left
+key:Right	key:Right
+key:Space	key:Space
+key:Up	key:Up
+make an edit selection first	先做一个编辑选区
+master	master
+media offline: {e}	媒体离线：{e}
+media offline: {why}	媒体离线：{why}
+micro	micro
+midi	midi
+minute	分钟
+move song start	移动歌曲起点
+movie missing from session	会话缺少视频
+movie offline	视频离线
+no audio input device	没有音频输入设备
+no audio track is record-enabled	没有音频轨道开启录音
+no automation has been copied	没有复制过自动化
+no clip effects have been copied	没有复制过片段效果
+no clip gain has been copied	没有复制过片段增益
+no markers on the clipboard	剪贴板上没有标记
+no previous selection to restore	没有可恢复的上一次选区
+no selected clip has a sync point	选中的片段都没有同步点
+nogrp	nogrp
+not opened: the path is not valid	未打开：路径无效
+nothing is selected	没有选中内容
+nothing to redo	没有可重做内容
+nothing to undo	没有可撤销内容
+recently	最近
+regions	范围
+score too large: over {} bytes	乐谱过大：超过 {} 字节
+select a clip in the Clip List	在片段列表里选一个片段
+select clips or files in the Clip List	在片段列表里选片段或文件
+stop recording before changing the audio device	换音频设备前先停止录音
+stopped asking for audio	不再请求音频
+the audio engine hit an internal error (see the log)	音频引擎发生内部错误（见日志）
+the clip "{name}"	片段“{name}”
+the clipboard is empty	剪贴板为空
+the file "{name}"	文件“{name}”
+the session has no tracks	会话没有轨道
+the session has not been saved	会话尚未保存
+times	次
+trim	trim
+vca	vca
+video	视频
+waveform	波形
+{bars} bars	{bars} 小节
+{b}-bit	{b} 位
+{clips} and {files}	{clips} 和 {files}
+{name} (not connected)	{name}（未连接）
+{name} loaded into the sampler	{name} 已加载进采样器
+{name} on {track} put out invalid audio, so it is bypassed until playback stops or starts again.	{track} 上的 {name} 输出了无效音频，已旁通，直到回放停止或重新开始。
+{name} send level	{name} 的发送电平
+{name} · Send {letter}	{name} · 发送 {letter}
+{n} ch	{n} 声道
+{n} clips on the timeline, which are removed too.	时间线上的 {n} 段片段（会一并移除）。
+{n} tracks	{n} 条轨道
+{n} {unit} ago	{n} {unit}前
+{n} {unit}s ago	{n} {unit}前
+{n} {what}s	{n} {what}s\n{path}
+not found	{path}\n未找到
+{question} Your changes will be lost.	{question}更改将丢失。
+{seconds:.2} s	{seconds:.2} s
+{sr} Hz{note}	{sr} Hz{note}
+{undo}   {ms:.1} ms/frame	{undo}   {ms:.1} ms/帧
+{v} {unit}	{v} {unit}
+{}  (missing)	{}（缺失）
+{} / {} / {}{}	{} / {} / {}{}
+{} @ {} Hz	{} @ {} Hz
+{} audio clips checked · {} issues	已检查 {} 个音频片段 · {} 个问题
+{} ch	{} 声道
+{} contributors · {} commits	{} 位贡献者 · {} 个提交
+{} for {}	{}（{}）
+{} object track(s)	{} 条对象轨道
+{} pan {}	{} pan {}
+{} samples	{} 采样
+{} volume	{} 音量
+{} · {} Hz · {} ch	{} · {} Hz · {} 声道
+{} · {} Hz · {} ch · {}	{} · {} Hz · {} 声道 · {}
+{} · {} Hz · {} · {} · {}	{} · {} Hz · {} · {} · {}
+{} — {} from channel {}	{} — {}，来自通道 {}
+{}: missing	{}：缺失
+·	·
+ΔLOC	ΔLOC
+“{name}” has {what} from an earlier run, autosaved {age}.	“{name}”有上一轮{what}，自动保存于{age}。
+“{}” already exists. Do you want to replace it?	“{}”已存在。要替换吗？
+−	−
+−Bin	−Bin
+−LOC	−LOC
+−∞	−∞
+♩ = {bpm:.2}   {n}/{d}	♩ = {bpm:.2}   {n}/{d}
+⬆	⬆
