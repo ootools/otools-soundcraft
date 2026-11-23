@@ -58,7 +58,7 @@
 | `shell/src/otools.rs` | 桥：`pick_open` / `pick_open_for_command` / `deliver` / 主题 / 社区链接判定 |
 | `shell/src/download.rs` | 上游浏览器下载回退（原样副本） |
 | `shell/src/i18n.rs` | 界面语言：读宿主 locale → 上游 `localization::Language`，写进 `app.ui.language`（上游每帧 enter） |
-| `shell/i18n/zh-CN.tsv` | 英 → 简体中 对照表（**唯一要编辑的翻译文件**，1179 条）；`node scripts/gen-i18n.mjs` 生成 zh-CN 语言包补丁 |
+| `shell/i18n/zh-CN.tsv` | 英 → 简体中 对照表（**唯一要编辑的翻译文件**，2053 条，覆盖上游 localization 全目录）；`node scripts/gen-i18n.mjs` 生成 zh-CN 语言包补丁 |
 | `shell/patches/soundcraft-zh-cn.patch` | 给上游 `localization` 加 `Language::Chinese` 变体 + `locales/zh-CN/mod.rs`（由 gen-i18n.mjs 生成，勿手改） |
 | `shell/src/main.rs` | wasm-only 外壳入口 |
 | `shell/patches/*.patch` | 对 `upstream/` 的本地裁剪（fallback 字体注入点 + 移除 Discord 链接） |
@@ -86,10 +86,9 @@
   所以「保存」始终是一个文件，不会在旁边写 `Audio Files/` 目录。
 - 界面语言：上游 2026-11 自带 `localization` 模块（English / pt-BR 静态表，显示串原样包在
   `localization::text` / `localized_format!`），插件通过 `soundcraft-zh-cn.patch` 给它加了简体中文
-  语言包（`shell/i18n/zh-CN.tsv` 1179 条，键 = 英文原文）。宿主 locale 以 `zh` 开头就用简中，
+  语言包（`shell/i18n/zh-CN.tsv` 2053 条，键 = 英文原文，已覆盖 pt-BR 键集全集）。宿主 locale 以 `zh` 开头就用简中，
   运行中切换语言下一秒生效（`crate::i18n::poll` 每秒轮询一次写 `app.ui.language`）。
-  我们的表覆盖旧补丁时代的菜单/窗口/工具栏层；上游后来新增的字符串未译的回落英文
-  （对照上游 `locales/pt-BR/mod.rs` 的键就知道还缺哪些）。上游偏好里也能手选语言
+  表已覆盖上游 `locales/pt-BR/mod.rs` 键集全集（2026-11-23 补齐 +874 条）；上游新增字符串未译的回落英文。上游偏好里也能手选语言
   （Language 菜单会列出 简体中文），但插件场景宿主语言优先。
   会话名/轨道名里的中文靠内嵌 fallback 字体显示（见 `soundcraft-otools.patch`）。
 
@@ -115,7 +114,7 @@
 
 维护：
 
-- **加翻译**：改 `shell/i18n/zh-CN.tsv` → `node scripts/gen-i18n.mjs` →
+- **加翻译**：改 `shell/i18n/zh-CN.tsv`（值里的换行写字面 `\n`） → `node scripts/gen-i18n.mjs` →
   `node scripts/fetch-upstream.mjs --force`（重放全部补丁）→ 重构建。补丁由脚本生成，勿手改。
 - **上游同步后**：`localization.rs` 的锚点若漂移，`gen-i18n.mjs` 会直接报错 ——
   按 `EDITS` 里的 8 处锚点重新对位。未译的新串回落英文；要补就往 TSV 加行。

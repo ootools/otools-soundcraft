@@ -87,10 +87,10 @@ About 面板里的 Discord 链接由补丁移除；`web.rs` 的 `logic()` 另外
 （`command_for_path` / `ruler_id` / `mix_section_id` / `params_for` 全按 path 匹配），`label` 只用于显示。
 同理，任何被 `match` / 查表当键用的字符串（自动化模式名、播放列表名、预设名）都不能包。
 
-覆盖范围（简体中文）：`shell/i18n/zh-CN.tsv` 现有 1179 条（旧补丁时代积累的菜单栏、
-命令面板、浮动窗口、工具栏提示等）。上游后来新增的字符串未译的回落英文——
-拿 `upstream/crates/ui-egui/locales/pt-BR/mod.rs` 的键对照 zh 表就能列出还缺哪些。
-引擎错误文案的翻译模板（`ERROR_TEMPLATES`）简中还没有，低层报错仍是英文。
+覆盖范围（简体中文）：`shell/i18n/zh-CN.tsv` 现有 2053 条，已覆盖上游
+`locales/pt-BR/mod.rs` 键集全集（菜单栏、命令面板、浮动窗口、偏好设置、工具栏
+提示、状态栏消息等）。上游新增字符串未译的回落英文。引擎错误文案的翻译模板
+（`ERROR_TEMPLATES`）简中还没有，低层报错仍是英文。
 
 ## MCP
 
