@@ -22,14 +22,13 @@ otools-soundcraft/
 │   │   ├── main.rs        # 编译自上游 soundcraft-web：wasm-only 外壳
 │   │   ├── web.rs         # 编译自上游 apps/soundcraft-web/src/web.rs（整层拷贝 + 改动）
 │   │   ├── otools.rs      # wasm-bindgen 桥：openFiles/saveFile/theme/language/deliver
-│   │   ├── i18n.rs        # 界面语言：读宿主 locale → 装翻译表
-│   │   ├── i18n/table.rs  # 由 scripts/gen-i18n.mjs 生成（不要手改）
+│   │   ├── i18n.rs        # 界面语言：宿主 locale → 上游 localization::Language
 │   │   └── download.rs    # 上游浏览器下载回退（原样副本）
 │   ├── i18n/zh-CN.tsv      # 英 → 简体中 对照表（唯一要编辑的文件）
 │   ├── assets/fonts/      # 内嵌 CJK + 阿拉伯 fallback 字体子集
 │   └── patches/           # 对上游的本地裁剪补丁（随 upstream 重拉而重放）
 │       ├── soundcraft-otools.patch
-│       └── soundcraft-i18n.patch
+│       └── soundcraft-zh-cn.patch  # gen-i18n.mjs 生成的 zh-CN 语言包（勿手改）
 ├── scripts/               # 构建 / 打包 / 发布 / 验证
 └── .github/workflows/     # 独立发布 CI
 ```
@@ -68,26 +67,30 @@ About 面板里的 Discord 链接由补丁移除；`web.rs` 的 `logic()` 另外
 
 ### 5. 界面语言：跟随 OTools 宿主（简体中文）
 
-上游 SoundCraft **没有界面语言偏好项**（见 `upstream/docs/localization-parity.md`：English only）。
-插件这一层把它补上：
+上游 2026-11 起自带 `localization` 模块（`crates/ui-egui/src/localization.rs`：
+`Language` 枚举 + `locales/` 静态表，显示串原样过 `localization::text` / `localized_format!`）。
+插件给它加了一门简体中文：
 
 1. `shell/index.html` 的 `window.soundcraftOtools.language()` 读出宿主注入的
    `window.__OTOOLS_LOCALE__.locale`（BCP 47，如 `zh-CN`）；
-2. `shell/src/i18n.rs` 按 `zh` 前缀判定，把 `shell/i18n/zh-CN.tsv` 生成的表装进
-   上游 `soundcraft_ui_egui::i18n`（由 `soundcraft-i18n.patch` 加进上游）；
-3. 上游所有**显示用**字符串过 `crate::i18n::t(...)`，查不到就原样返回英文。
+2. `shell/src/i18n.rs` 把宿主 locale 映射成上游 `Language`（`zh-*` 一律简中），
+   启动写进 `app.ui.language`，之后每秒轮询一次，运行中改宿主语言下一秒生效；
+3. `shell/patches/soundcraft-zh-cn.patch`（由 `scripts/gen-i18n.mjs` 从
+   `shell/i18n/zh-CN.tsv` 生成）给上游 `Language` 加 `Chinese` 变体 + zh-CN 翻译表；
+   查不到的键原样返回英文。
 
 要加翻译：编辑 `shell/i18n/zh-CN.tsv`（一行一条，`英文` + TAB + `中文`）→
-`node scripts/gen-i18n.mjs` → 重新构建。补丁里的包装点不用手改。
+`node scripts/gen-i18n.mjs` → `node scripts/fetch-upstream.mjs --force` → 重新构建。
+补丁由脚本生成，勿手改。
 
 **只译 label，不译 path**。菜单树 `MenuNode { label, path }` 里 `path` 承载逻辑
 （`command_for_path` / `ruler_id` / `mix_section_id` / `params_for` 全按 path 匹配），`label` 只用于显示。
 同理，任何被 `match` / 查表当键用的字符串（自动化模式名、播放列表名、预设名）都不能包。
 
-覆盖范围（简体中文）：菜单栏与命令面板全部条目、全部浮动窗口的标题与字段/按钮、
-工具栏提示、面板分区标题、轨道/片段右键菜单、About 与恢复等对话框。
-**还没有**：插件参数名与选项值（来自 `soundcraft_dsp` 的数据）、引擎状态文案、
-撤销历史的步骤名、egui 自带的文本编辑右键菜单。
+覆盖范围（简体中文）：`shell/i18n/zh-CN.tsv` 现有 1179 条（旧补丁时代积累的菜单栏、
+命令面板、浮动窗口、工具栏提示等）。上游后来新增的字符串未译的回落英文——
+拿 `upstream/crates/ui-egui/locales/pt-BR/mod.rs` 的键对照 zh 表就能列出还缺哪些。
+引擎错误文案的翻译模板（`ERROR_TEMPLATES`）简中还没有，低层报错仍是英文。
 
 ## MCP
 

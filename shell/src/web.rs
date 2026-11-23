@@ -1,12 +1,13 @@
 //! The plugin shell: the eframe web runner around [`SoundApp`], with the OTools host
 //! bridge standing in for the browser's file picker and download.
 //!
-//! 改编自上游 `apps/soundcraft-web/src/web.rs`（整层拷贝），改动只有三处：
+//! 改编自上游 `apps/soundcraft-web/src/web.rs`（整层拷贝），改动只有四处：
 //! 1. `take_path_prompt` 在 OTools 里弹宿主的打开对话框（`crate::otools::pick_open`），
 //!    字节进 `Inbox`；不在 OTools 里才退回上游的 `rfd` 浏览器选文件框；
 //! 2. `io::set_deliver` 在 OTools 里把保存/导出的字节交给宿主写盘
 //!    （`crate::otools::deliver`），否则仍是浏览器下载（`crate::download`）；
-//! 3. `logic` 里吞掉社区外链，启动时跟随 OTools 的界面主题。
+//! 3. `logic` 里吞掉社区外链，启动时跟随 OTools 的界面主题；
+//! 4. 界面语言跟随宿主（`crate::i18n`，接上游 `localization` 模块）而不是浏览器 navigator。
 
 use serde_json::json;
 
@@ -15,7 +16,7 @@ use crate::otools::Purpose;
 use soundcraft_engine::{Engine, io};
 use soundcraft_ui_egui::dialogs::Dialog;
 use soundcraft_ui_egui::sampler_window::SampleRead;
-use soundcraft_ui_egui::{Services, SoundApp};
+use soundcraft_ui_egui::{Services, SoundApp, localization, localized_format};
 use std::cell::RefCell;
 use std::rc::Rc;
 use std::sync::Arc;
@@ -26,8 +27,6 @@ const LOADING_ID: &str = "soundcraft_loading";
 
 pub fn start() {
     eframe::WebLogger::init(log::LevelFilter::Info).ok();
-    // 界面语言：第一帧之前就装好表（宿主语言决定菜单中文还是英文）。
-    crate::i18n::poll_host_language();
     // 保存/导出：在 OTools 里交给宿主的另存对话框与磁盘；否则退回浏览器下载。
     if crate::otools::available() {
         io::set_deliver(crate::otools::deliver);
@@ -35,6 +34,8 @@ pub fn start() {
         io::set_deliver(crate::download::download);
     }
     wasm_bindgen_futures::spawn_local(async {
+        // 加载/报错文本也过上游 localization：用宿主语言包住这段（对齐上游 web.rs）。
+        let _language = crate::i18n::enter_host();
         let Some(document) = web_sys::window().and_then(|w| w.document()) else {
             log::error!("no document");
             return;
@@ -68,6 +69,8 @@ pub fn start() {
                         ("otools-arabic".into(), std::sync::Arc::new(egui::FontData::from_static(include_bytes!("../assets/fonts/otools-arabic-subset.ttf")))),
                     ]);
                     let mut app = SoundApp::new(engine, Some(player), Services::default());
+                    // 界面语言：宿主语言写进 app 的语言偏好（上游每帧 enter(self.ui.language)）。
+                    crate::i18n::apply_at_start(&mut app);
                     // 第一次打开跟随 OTools 的界面主题（插件 webview 的 documentElement.classList）。
                     if crate::otools::theme() == "light" {
                         app.ui.theme = soundcraft_ui_egui::theme::ThemeMode::Light;
@@ -83,7 +86,11 @@ pub fn start() {
         if let Some(el) = document.get_element_by_id(LOADING_ID) {
             match result {
                 Ok(()) => el.remove(),
-                Err(e) => el.set_inner_html(&format!("<p>SoundCraft failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
+                Err(e) => el.set_inner_html(&format!(
+                    "<p>{}</p><p>{}</p>",
+                    localized_format!("SoundCraft failed to start: {}", format!("{e:?}")),
+                    localization::text("A browser with WebGPU or WebGL2 is required.")
+                )),
             }
         }
     });
@@ -225,7 +232,7 @@ impl eframe::App for WebShell {
         // 启动时一定生效，运行中改宿主语言也能跟上。
         self.frames = self.frames.wrapping_add(1);
         if self.frames % 60 == 1 {
-            crate::i18n::poll_host_language();
+            crate::i18n::poll(&mut self.app);
         }
         self.take_drops(ctx);
         self.take_path_prompt(ctx);

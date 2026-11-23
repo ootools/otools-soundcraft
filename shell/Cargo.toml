@@ -29,7 +29,6 @@ soundcraft-playback = { path = "../upstream/crates/playback" }
 soundcraft-model = { path = "../upstream/crates/model" }
 soundcraft-mix = { path = "../upstream/crates/mix" }
 soundcraft-dsp = { path = "../upstream/crates/dsp" }
-soundcraft-audio-io = { path = "../upstream/crates/audio-io" }
 soundcraft-midi = { path = "../upstream/crates/midi" }
 soundcraft-time = { path = "../upstream/crates/time" }
 soundcraft-video = { path = "../upstream/crates/video" }
@@ -74,10 +73,6 @@ features = [
 opt-level = 3
 lto = "thin"
 codegen-units = 16
-
-# 与上游 `upstream/Cargo.toml` 的 `[patch.crates-io]` 保持一致：上游把整个 egui 家族
-# 钉在 storytold/egui 的审查 commit 上。本 crate 是独立 workspace，不写这段就会解析到
-# crates.io 的 egui，与上游 `craft-ui` / `soundcraft-ui-egui` 期望的 API 对不上。
 [patch.crates-io]
 ecolor = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
 emath = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
@@ -91,3 +86,6 @@ egui_extras = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799
 egui_kittest = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
 egui_system_font_provider = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
 eframe = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_demo_lib = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_inspection = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+winit = { git = "https://github.com/storytold/winit.git", rev = "a517b3846ee8457d84ee4975110bfda6797c44dc" }
