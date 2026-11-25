@@ -1,6 +1,6 @@
 diff --git a/crates/ui-egui/locales/zh-CN/mod.rs b/crates/ui-egui/locales/zh-CN/mod.rs
 new file mode 100644
-index 0000000..73702fd
+index 0000000..3e8e6a1
 --- /dev/null
 +++ b/crates/ui-egui/locales/zh-CN/mod.rs
 @@ -0,0 +1,2064 @@
@@ -1959,7 +1959,6 @@ index 0000000..73702fd
 +        "no selected clip has a sync point" => "选中的片段都没有同步点",
 +        "nogrp" => "nogrp",
 +        "none" => "无",
-+        "not found" => "{path}\u{a}未找到",
 +        "not opened: the path is not valid" => "未打开：路径无效",
 +        "notes" => "个音符",
 +        "nothing is selected" => "没有选中内容",
@@ -2028,7 +2027,8 @@ index 0000000..73702fd
 +        "{n} tracks" => "{n} 条轨道",
 +        "{n} {unit} ago" => "{n} {unit}前",
 +        "{n} {unit}s ago" => "{n} {unit}前",
-+        "{n} {what}s" => "{n} {what}s\u{a}{path}",
++        "{n} {what}s" => "{n} {what}",
++        "{path}\u{a}not found" => "{path}\u{a}未找到",
 +        "{question} Your changes will be lost." => "{question}更改将丢失。",
 +        "{seconds:.2} s" => "{seconds:.2} s",
 +        "{sr} Hz{note}" => "{sr} Hz{note}",

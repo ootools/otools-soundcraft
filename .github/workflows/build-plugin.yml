@@ -21,6 +21,9 @@ jobs:
         with:
           submodules: true
 
+      - name: 校验翻译占位符与发布脚本
+        run: node --test scripts/*.test.mjs
+
       - name: 探测构建模式
         id: mode
         shell: bash

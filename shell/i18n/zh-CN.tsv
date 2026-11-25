@@ -2018,8 +2018,8 @@ waveform	波形
 {n} tracks	{n} 条轨道
 {n} {unit} ago	{n} {unit}前
 {n} {unit}s ago	{n} {unit}前
-{n} {what}s	{n} {what}s\n{path}
-not found	{path}\n未找到
+{n} {what}s	{n} {what}
+{path}\nnot found	{path}\n未找到
 {question} Your changes will be lost.	{question}更改将丢失。
 {seconds:.2} s	{seconds:.2} s
 {sr} Hz{note}	{sr} Hz{note}
