@@ -87,7 +87,7 @@ About 面板里的 Discord 链接由补丁移除；`web.rs` 的 `logic()` 另外
 （`command_for_path` / `ruler_id` / `mix_section_id` / `params_for` 全按 path 匹配），`label` 只用于显示。
 同理，任何被 `match` / 查表当键用的字符串（自动化模式名、播放列表名、预设名）都不能包。
 
-覆盖范围（简体中文）：`shell/i18n/zh-CN.tsv` 现有 2053 条，已覆盖上游
+覆盖范围（简体中文）：`shell/i18n/zh-CN.tsv` 现有 2055 条，已覆盖上游
 `locales/pt-BR/mod.rs` 的 UI 字符串键集（不含 `ERROR_TEMPLATES`）（菜单栏、命令面板、浮动窗口、偏好设置、工具栏
 提示、状态栏消息等）。上游新增字符串未译的回落英文。引擎错误文案的翻译模板
 （`ERROR_TEMPLATES`）简中还没有，低层报错仍是英文。
@@ -188,3 +188,7 @@ pwsh -File scripts/deploy-to-otools.ps1
 URL 参数沿用上游：`?webgl` 强制 WebGL2、`?empty` 以空会话启动（默认载入演示会话）。
 
 详细约定见 [AGENTS.md](./AGENTS.md)。
+## 当前移植快照（2026-11-25）
+
+当前 `upstream.pin` 固定到 [`768c0f972d6f`](https://github.com/storytold/soundcraft/commit/768c0f972d6fce82224eb8db001094868a0c321a)。
+本次同步包含上游自 `915481be1b49` 之后的更新；插件发布版本维持不变，发布时再记录发行版本。
